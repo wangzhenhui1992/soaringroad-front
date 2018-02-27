@@ -1,0 +1,17 @@
+.app-hp-header {
+  // background-image: url('http://image.youzhan.org/d/dd/2de797545de56274f03a5920eb3a1.jpg');
+  background-image: url('http://www.soaringroad.com/wp-content/uploads/2018/01/h3.jpg');
+  background-repeat: no-repeat;
+  height: 300px;
+  background-size: cover;
+  display: flex;
+}
+
+.app-hp-title {
+  background:linear-gradient(to right,rgb(163, 162, 238),rgb(130, 128, 240),rgb(153, 102, 255),rgb(23, 20, 243),rgb(153, 102, 255),rgb(163, 162, 238));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  background-size: contain;
+}
+

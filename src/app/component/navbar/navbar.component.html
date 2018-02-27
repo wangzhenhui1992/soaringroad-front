@@ -1,0 +1,56 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" role="navigation">
+  <a class="navbar-brand text-light" href="http://www.soaringroad.com">
+    <i class="fas fa-home"></i> {{brand}}
+  </a>
+  <button class="navbar-toggler" (click)="isCollapsed= !isCollapsed" type="button" data-toggle="collapse" data-target="#navbarTogglerContent"
+    aria-controls="navbarTogglerContent" aria-expanded="true" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerContent" [collapse]="isCollapsed">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <ng-template ngFor let-item [ngForOf]="navbarItems" let-isFirst="first" let-i="index">
+        <li class="nav-justified nav-item" [class.active]="isFirst" *ngIf="item.type === 1">
+          <a class="nav-link" routerLink="{{item.link}}">{{item.name}}
+            <span *ngIf="isFirst" class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="text-left nav-justified nav-item" *ngIf="item.type === 0 " [class.active]="isFirst">
+          <div class="dropdown nav-item" dropdown>
+            <a class="dropdown-toggle nav-link" routerLink="{{item.url}}" dropdownToggle id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              {{item.name}}
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown" *dropdownMenu>
+              <ng-template ngFor let-itemMenu [ngForOf]="item.dropdownItems" let-isMenuFirst="first">
+                <div class="dropdown-divider" *ngIf="!isMenuFirst"></div>
+                <a class="dropdown-item" routerLink="{{itemMenu.url}}" dropdownItem>{{itemMenu.name}}</a>
+              </ng-template>
+            </div>
+          </div>
+        </li>
+      </ng-template>
+    </ul>
+    <form class="form-inline my-2 my-lg-0 ">
+      <button (click)="staticModal.show();" type="button" class="btn btn-outline-warning my-2 my-sm-0">
+        <i class="fa fa-search" aria-hidden="true"></i>
+      </button>
+    </form>
+  </div>
+</nav>
+<div class="modal fade " bsModal #staticModal="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg ">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title">飞升之路</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="staticModal.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div [innerHtml]="searchBoxHtml"></div>
+      </div>
+    </div>
+  </div>
+</div>
