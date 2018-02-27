@@ -1,0 +1,10 @@
+[
+  {
+    "context": [
+      "/api",
+      "/common"
+    ],
+    "target": "http://localhost:4321",
+    "secure": false
+  }
+]

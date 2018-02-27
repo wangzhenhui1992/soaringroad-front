@@ -1,0 +1,21 @@
+<div class="header app-hp-header text-center">
+  <div class="my-auto mx-auto">
+    <h1 class="text-light">
+      <span>
+        <b>Soaring</b>
+      </span>
+      <span>
+        <b>Road</b>
+      </span>
+    </h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-10 col-xl-10 col-md-10 col-sm-11 col-11 mx-auto">
+    <div class="row">
+        <div *ngFor="let article of articles" class="col-xl-4 col-sm-6 col-md-6 col-ms-12 my-4">
+            <app-card [title]="article.title" [id]="article.id" [img]="article.img" [text]="article.text"></app-card>
+          </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<div class="card  app-card-border">
+  <div class="app-card-img rounded" [style.background-image]="'url('+ img + ')'">
+    <div class="app-content">
+      <span>{{text}}</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <h4 class="card-title">{{title}}</h4>
+    <br>
+    <p class="text-muted">
+      <span class="col"><small>作者:wangzhenhui</small></span>
+    </p>
+    <p class="text-muted">
+        <span class="col"><small>日期:2018-02-01</small></span>
+        <span class="col"><small>分类:学习</small></span>
+    </p>
+  </div>
+  <div class="card-footer">
+    <a class="card-link btn btn-outline-primary" [routerLink]="['/article/id/'+id]" routerLinkActive="active">View Detail</a>
+  </div>
+</div>
