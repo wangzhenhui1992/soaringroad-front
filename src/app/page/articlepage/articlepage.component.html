@@ -1,13 +1,13 @@
-<div class="app-container">
-    <div class="col-md-8 mx-auto text-center bg-light text-dark col-sm-11 col-11"  *ngIf="article">
+<div class="app-container container">
+    <div class="mx-auto text-center bg-light text-dark"  *ngIf="article">
       <article class="app-article-article">
         <h1>
           {{article.title}}
         </h1>
-        <section>
-          <span class="col"><small>作者:{{article.author}}</small> </span>
-          <span class="col"><small><time> 日期:{{article.date}} </time></small></span>
-          <span class="col"><small>分类:{{article.category}}</small></span>
+        <section class="text-primary">
+          <span class="col"><small>{{article.author}}</small> </span>
+          <span class="col"><small><time>{{article.date}} </time></small></span>
+          <a class="col" [routerLink]="['/result/category/'+article.category]" routerLinkActive="active"><small>{{article.category}}</small></a>
         </section>
         <section *ngIf="article.labels && article.labels.length > 0">
           <ng-template  ngFor let-item [ngForOf]="article.labels">

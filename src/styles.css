@@ -27,7 +27,8 @@
 }
 
 .app-container {
-  margin-top: 50px
+  margin-top: 50px;
+  min-height: 500px;
 }
 
 .app-bg-dark {
@@ -43,5 +44,12 @@ pre {
   /* color:white !important; */
   padding : 10px;
 }
+
+.line-limit-length {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  }
+
 
 

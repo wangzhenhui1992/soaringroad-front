@@ -33,7 +33,6 @@ export class LoginpageComponent implements OnInit {
 
     const result = this.loginService.auth(this.username, this.password);
     result.subscribe(authResult => {
-      console.log(authResult);
       if (!authResult) {
         this.message = '验证失败！入侵他人网站是非法行为！';
         localStorage.setItem('login-user', '');
