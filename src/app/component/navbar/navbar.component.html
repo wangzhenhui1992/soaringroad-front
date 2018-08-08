@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark" role="navigation">
-  <a class="navbar-brand text-light" href="http://www.soaringroad.com">
+<nav class="navbar navbar-expand-lg navbar-light bg-light " role="navigation">
+  <a class="navbar-brand text-dark" href="/">
     <i class="fas fa-home"></i> {{brand}}
   </a>
   <button class="navbar-toggler" (click)="isCollapsed= !isCollapsed" type="button" data-toggle="collapse" data-target="#navbarTogglerContent"
@@ -10,17 +10,17 @@
   <div class="collapse navbar-collapse" id="navbarTogglerContent" [collapse]="isCollapsed">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <ng-template ngFor let-item [ngForOf]="navbarItems" let-isFirst="first" let-i="index">
-        <li class="nav-justified nav-item" [class.active]="isFirst" *ngIf="item.type === 1">
-          <a class="nav-link" routerLink="{{item.link}}">{{item.name}}
+        <li class="nav-justified nav-item active" *ngIf="item.type === 1">
+          <a class="nav-link" routerLink="{{item.url}}">{{item.name}}
             <span *ngIf="isFirst" class="sr-only">(current)</span>
           </a>
         </li>
-        <li class="text-left nav-justified nav-item" *ngIf="item.type === 0 " [class.active]="isFirst">
+        <li class="text-left nav-justified nav-item" *ngIf="item.type === 0 " >
           <div class="dropdown nav-item" dropdown>
-            <a class="dropdown-toggle nav-link" routerLink="{{item.url}}" dropdownToggle id="navbarDropdown" role="button" data-toggle="dropdown"
+            <li class="dropdown-toggle nav-link  active" href="javascript:{}" dropdownToggle id="navbarDropdown" role="button" data-toggle="dropdown"
               aria-haspopup="true" aria-expanded="false">
               {{item.name}}
-            </a>
+            </li>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown" *dropdownMenu>
               <ng-template ngFor let-itemMenu [ngForOf]="item.dropdownItems" let-isMenuFirst="first">
                 <div class="dropdown-divider" *ngIf="!isMenuFirst"></div>
@@ -31,6 +31,11 @@
         </li>
       </ng-template>
     </ul>
+
+    <form class="form-inline">
+      <app-social *ngIf="socialLists && socialLists.length" [socialLists]="socialLists"></app-social>
+    </form>
+
     <form class="form-inline my-2 my-lg-0 ">
       <button (click)="staticModal.show();" type="button" class="btn btn-outline-warning my-2 my-sm-0">
         <i class="fa fa-search" aria-hidden="true"></i>

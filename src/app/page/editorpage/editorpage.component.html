@@ -1,0 +1,68 @@
+<div class="app-container">
+  <div class="col-md-8 col-sm-8 col-8 col-lg-8 text-center mx-auto">
+    <div class="text-left mx-auto text-dark row">
+      <h4>标题</h4>
+    </div>
+    <div class="mx-auto text-left  text-dark row">
+      <input [(ngModel)]="article.title" class="col-md-6 col-sm-6 col-6 col-lg-6  app-editor-border" placeholder="请输入标题">
+    </div>
+    <br/>
+    <div class="text-left mx-auto text-dark row">
+      <h4>正文</h4>
+    </div>
+    <div class="mx-auto text-center  text-dark  row">
+      <textarea [(ngModel)]="article.content" (keyup)="onChange()" class="col app-editor-border" rows="{{rows}}"></textarea>
+    </div>
+    <br/>
+    <div class="text-left mx-auto text-dark row">
+      <h4>概述</h4>
+    </div>
+    <div class="mx-auto text-center  text-dark  row">
+      <textarea [(ngModel)]="article.summary" class="col-md-12 col-sm-12 col-12 col-lg-12  app-editor-border" placeholder="请输入概述" rows="5"
+        maxlength="200"></textarea>
+    </div>
+    <br/>
+    <div class="text-left mx-auto text-dark row">
+      <h4>分类</h4>
+    </div>
+    <div class="mx-auto text-center  text-dark  row">
+      <input [(ngModel)]="article.category" class="col-md-12 col-sm-12 col-12 col-lg-12  app-editor-border" placeholder="请输入分类">
+    </div>
+    <br/>
+    <div class="text-left mx-auto text-dark row">
+      <h4>图片</h4>
+    </div>
+    <div class="mx-auto text-center  text-dark  row">
+      <input [(ngModel)]="article.image" class="col-md-12 col-sm-12 col-12 col-lg-12  app-editor-border" placeholder="请输入图片地址">
+    </div>
+    <br/>
+    <div class="text-left mx-auto text-dark row">
+      <h4>标签</h4>
+    </div>
+    <div class="mx-auto text-center  text-dark  row">
+      <input [(ngModel)]="label" class="col-md-6 col-sm-6 col-6 col-lg-6  app-editor-border" placeholder="请输入标签">
+      <button class="btn btn-primary" (click)="onAddLabel()"> 添加 </button>
+    </div>
+    <br/>
+    <div class="mx-auto text-center  text-dark  row" *ngIf="this.article.labels && this.article.labels.length > 0">
+      <a *ngFor="let label of this.article.labels" style="cursor:hand" href="javascript:{}" (click)="onClickLabel(label)" class="badge badge-success app-editor-badge">
+        <span class="">{{label}}</span>
+      </a>
+    </div>
+    <br/>
+    <div class="mx-auto text-center  text-dark  row">
+      <button class="btn btn-primary" (click)="onSubmit()"> 提交 </button>
+    </div>
+    <hr>
+    <div class="text-left mx-auto text-dark row">
+      <h4>预览</h4>
+    </div>
+    <div class="mx-auto  text-center  text-dark  row">
+      <div class="text-left col bg-light " [innerHtml]="safeBody"></div>
+    </div>
+
+    <div class="col-md-4 d-none d-md-block">
+      <!-- todo for menu and ads-->
+    </div>
+  </div>
+</div>

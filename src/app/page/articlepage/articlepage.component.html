@@ -1,21 +1,21 @@
 <div class="app-container">
-    <div class="col-md-8 mx-auto text-center bg-light text-dark col-sm-11 col-11">
-      <article>
+    <div class="col-md-8 mx-auto text-center bg-light text-dark col-sm-11 col-11"  *ngIf="article">
+      <article class="app-article-article">
         <h1>
-          {{title}}
+          {{article.title}}
         </h1>
         <section>
-          <span class="col"><small>作者:{{author}}</small> </span>
-          <span class="col"><small><time> 日期:{{time}} </time></small></span>
-          <span class="col"><small>分类:{{category}}</small></span>
+          <span class="col"><small>作者:{{article.author}}</small> </span>
+          <span class="col"><small><time> 日期:{{article.date}} </time></small></span>
+          <span class="col"><small>分类:{{article.category}}</small></span>
         </section>
-        <section *ngIf="tags && tags.length > 0">
-          <ng-template  ngFor let-item [ngForOf]="tags">
-              <a [routerLink]="['/article/tag/'+item]" ><span  class="badge badge-primary">{{item}}</span></a>
+        <section *ngIf="article.labels && article.labels.length > 0">
+          <ng-template  ngFor let-item [ngForOf]="article.labels">
+              <a [routerLink]="['/result/label/'+item]" ><span  class="badge badge-primary">{{item}}</span></a>
           </ng-template>
         </section>
         <hr/>
-        <div class="text-left row" [innerHTML]="safeBody" ></div>
+        <div class="text-left col-md-12 col-12" [innerHTML]="safeBody" ></div>
       </article>
     </div>
     <div class="col-md-4 d-none d-md-block">

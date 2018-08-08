@@ -1,7 +1,7 @@
 const url = require('url');
 module.exports = [
   {
-    url: /\/api\/v1\/article\/id\/\d/,
+    url: /\/api\/article\/\d/,
     method: 'get',
     res: function (req, res, callback) {
       let paths = url.parse(req.url).pathname.split('\/')

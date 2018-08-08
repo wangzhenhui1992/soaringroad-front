@@ -2,7 +2,7 @@
 
 @import 'https://use.fontawesome.com/releases/v5.0.4/css/all.css';
 
-*:not(.fa):not(.fas):not(.gsc-search-button) {
+*:not(.fa,.fas,.fab):not(.gsc-search-button) {
     font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif !important
 }
 
@@ -33,3 +33,15 @@
 .app-bg-dark {
   background-color: black;
 }
+
+.app-bg-light {
+  background-color: #f1f1f1;
+}
+
+pre {
+  background-color: #eee !important;
+  /* color:white !important; */
+  padding : 10px;
+}
+
+

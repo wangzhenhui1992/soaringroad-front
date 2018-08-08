@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import Settings from '../../util/settings';
 import { DomSanitizer } from '@angular/platform-browser';
 import { SafeHtml } from '@angular/platform-browser';
+import { SocialModel } from '../social/social.model';
 
 @Component({
   selector: 'app-navbar',
@@ -15,6 +16,7 @@ export class NavbarComponent implements OnInit {
   searchBoxHtml: SafeHtml;
   navbarItems: { type: number, name: string, url: string,
     dropdownItems?: { name: string, url: string}[] }[];
+  socialLists: SocialModel[];
 
   constructor(private domSanitizer: DomSanitizer) { }
 
@@ -22,6 +24,7 @@ export class NavbarComponent implements OnInit {
     this.isCollapsed = true;
     this.brand = 'SR';
     this.navbarItems = Settings.NAVBAR_ITEMS;
+    this.socialLists = Settings.SOCIAL_LISTS;
     this.searchBoxHtml = this.domSanitizer.bypassSecurityTrustHtml(
       '<gcse:search></gcse:search>');
   }

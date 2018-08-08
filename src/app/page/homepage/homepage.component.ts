@@ -1,35 +1,33 @@
 import { Component, OnInit } from '@angular/core';
 import { PageComponent } from '../page.component';
 import { HostBinding } from '@angular/core';
+import { Article } from '../../entity/article';
+import { ArticleService } from '../../service/article.service';
+import { CarouselConfig } from 'ngx-bootstrap/carousel';
 
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
-  styleUrls: ['./homepage.component.scss']
+  styleUrls: ['./homepage.component.scss'],
+  providers:
+    [ ArticleService,
+       { provide: CarouselConfig, useValue: { interval: 2000, noPause: false, showIndicators: true } }
+    ]
 })
 export class HomepageComponent extends PageComponent implements OnInit {
 
   @HostBinding('style.margin') margin = '0 !important';
   @HostBinding('style.padding') padding = '0 !important';
 
-  articles: {title: string, text: string, img: string, id: string}[] = [];
-  constructor() {
+  articles: Article[] = [];
+  constructor(private articleService: ArticleService) {
     super();
-   }
+  }
 
   ngOnInit() {
-    this.articles.push(
-      {title: 'AWS', text: 'AWS Text', img: 'http://www.soaringroad.com/wp-content/uploads/2017/11/architect.jpg', id: '1' });
-      this.articles.push(
-        {title: 'AWS', text: 'AWS Text', img: 'http://www.soaringroad.com/wp-content/uploads/2017/11/architect.jpg', id: '1' });
-        this.articles.push(
-          {title: 'AWS', text: 'AWS Text', img: 'http://www.soaringroad.com/wp-content/uploads/2017/11/architect.jpg', id: '1' });
-          this.articles.push(
-            {title: 'AWS', text: 'AWS Text', img: 'http://www.soaringroad.com/wp-content/uploads/2017/11/architect.jpg', id: '1' });
-            this.articles.push(
-              {title: 'AWS', text: 'AWS Text', img: 'http://www.soaringroad.com/wp-content/uploads/2017/11/architect.jpg', id: '1' });
-              this.articles.push(
-                {title: 'AWS', text: 'AWS Text', img: 'http://www.soaringroad.com/wp-content/uploads/2017/11/architect.jpg', id: '1' });
+    this.articleService.searchForHomePage().subscribe(body => {
+      this.articles = body;
+    } );
   }
 
 }

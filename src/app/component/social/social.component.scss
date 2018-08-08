@@ -1,0 +1,11 @@
+.app-social-link {
+  border: 0 !important;
+  background : transparent;
+}
+.app-social-link>a , .app-social-link>i {
+  color: #adb5bd !important;
+}
+
+.app-social-link:hover>a,.app-social-link:hover>i{
+  color: #007bff !important;
+}

@@ -6,21 +6,17 @@ import { ArticleService } from '../../service/article.service';
 import PagePath from '../../util/pagepath';
 import { RequestService } from '../../service/common/request.service';
 import { markdown } from 'markdown';
+import { Article } from '../../entity/article';
 
 @Component({
   selector: 'app-articlepage',
   templateUrl: './articlepage.component.html',
   styleUrls: ['./articlepage.component.scss'],
-  providers: [ArticleService, RequestService]
+  providers: [ArticleService, Navigator]
 })
 export class ArticlepageComponent extends PageComponent implements OnInit {
 
-  title: string;
-  author: string;
-  time: string;
-  category: string;
-  content: string;
-  tags: string[];
+  article: Article;
   safeBody: SafeHtml;
 
   constructor(private router: Router, private activedRouter: ActivatedRoute, private articleService: ArticleService,
@@ -31,20 +27,21 @@ export class ArticlepageComponent extends PageComponent implements OnInit {
   ngOnInit() {
     const articleId = this.activedRouter.snapshot.params['id'];
     if (!articleId) {
-      this.router.navigate([PagePath.ERRO_PAGE]);
+      this.router.navigate([PagePath.ERROR_PAGE]);
     }
-    const info = this.articleService.getArticleById(articleId);
+    const info = this.articleService.get(articleId);
     if (!info) {
-      this.router.navigate([PagePath.ERRO_PAGE]);
+      this.router.navigate([PagePath.ERROR_PAGE]);
       return;
     }
     info.subscribe(body => {
-      this.author = body['author'];
-      this.title = body['title'];
-      this.time = body['time'];
-      this.category = body['category'];
-      this.tags = body['tags'];
-      this.safeBody = this.domSanitizer.bypassSecurityTrustHtml(markdown.toHTML(body['content']));
+      this.article = body;
+      if (!this.article) {
+        this.router.navigate([PagePath.ERROR_PAGE]);
+        return;
+      }
+      this.safeBody = this.domSanitizer.bypassSecurityTrustHtml(markdown.toHTML(this.article.content));
+
     });
   }
 
