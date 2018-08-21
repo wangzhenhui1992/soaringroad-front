@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Article } from '../../entity/article';
 import { ArticleService } from '../../service/article.service';
-import { ActivatedRoute } from '../../../../node_modules/@angular/router';
+import { ActivatedRoute, Router } from '../../../../node_modules/@angular/router';
+import PagePath from '../../util/pagepath';
 
 @Component({
   selector: 'app-resultpage',
@@ -11,14 +12,24 @@ import { ActivatedRoute } from '../../../../node_modules/@angular/router';
 })
 export class ResultpageComponent implements OnInit {
   articles: Article[] = [];
-  constructor(private articleService: ArticleService, private activedRouter: ActivatedRoute) { }
+  constructor(private articleService: ArticleService, private activedRouter: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     const paramClass = this.activedRouter.snapshot.params['class'];
     const paramKey = this.activedRouter.snapshot.params['key'];
-    this.articleService.searchArticleByCategory(paramKey).toPromise().then(data => {
-      this.articles = data;
-    });
+    switch (paramClass) {
+      case 'category': this.articleService.searchArticleByCategory(paramKey).toPromise().then(data => {
+                         this.articles = data;
+                       });
+                       break;
+      case 'label': this.articleService.searchArticleByLabel(paramKey).toPromise().then(data => {
+                         this.articles = data;
+                       });
+                       break;
+      default : this.router.navigateByUrl(PagePath.ERROR_PAGE);
+    }
+
+
   }
 
 }

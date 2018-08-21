@@ -33,6 +33,13 @@ export class ArticleService {
     return this.search(query);
   }
 
+  public searchArticleByLabel(label: string, pageNumber: number = 0): Observable<Article[]> {
+    const query = '{' + (pageNumber ? '"pageNumber":' + pageNumber : '')
+      + '"queryNumber":20,"queryConditions":[{"name":"labels","option":"MEMBER","value":"' + label + '"}],'
+      + '"querySort":[{"name":"id","sortOrder":"DESC"}]}';
+    return this.search(query);
+  }
+
   public count(): Observable<number> {
     const url = Settings.host + Settings.apis.article + 'count';
     return this.requestService.doRequestMain<number>(url, null, 'get');

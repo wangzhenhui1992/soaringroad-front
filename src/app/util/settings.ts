@@ -5,31 +5,31 @@ export default class Setting {
       type: 1, name: 'JAVA', url: '/'
     },
     {
-      type: 0, name: '人工智能', url: '/',
+      type: 0, name: '人工智能', url: '',
       dropdownItems: [
-        {name: 'Tensorflow', url: '/'},
-        {name: 'DeepLearning.ai', url: '/'},
-        {name: '人工智能-其他', url: '/'}
+        {name: 'Tensorflow', url: '/result/category/Tensorflow'},
+        {name: 'DeepLearning.ai', url: '/result/category/DeepLearning.ai'},
+        {name: '人工智能-其他', url: '/result/category/人工智能-其他'}
       ]
     },
     {
       type: 0, name: '架构', url: '/',
       dropdownItems: [
-        {name: 'AWS', url: '/'},
-        {name: '阿里云', url: '/'},
-        {name: 'Docker', url: '/'},
-        {name: '设计模式', url: '/'},
-        {name: '架构-其他', url: '/'}
+        {name: 'AWS', url: '/result/category/AWS'},
+        {name: '阿里云', url: '/result/category/阿里云'},
+        {name: 'Docker', url: '/result/category/Docker'},
+        {name: '设计模式', url: '/result/category/设计模式'},
+        {name: '架构-其他', url: '/result/category/架构-其他'}
       ]
     },
     {
-      type: 1, name: '前端', url: '/'
+      type: 1, name: '前端', url: '/result/category/前端'
     },
     {
-      type: 1, name: '生活随想', url: '/'
+      type: 1, name: '生活随想', url: '/result/category/生活随想'
     },
     {
-      type: 1, name: '自我介绍', url: '/'
+      type: 1, name: '自我介绍', url: '/myself'
     }
   ];
 
@@ -47,7 +47,7 @@ export default class Setting {
   public static SOCIAL_LISTS = [
       {link: 'https://www.github.com/wangzhenhui1992', name: 'github' },
       {link: 'https://www.qq.com/605951224', name: 'weixin' },
-      {link: 'https://www.qq.com/605951224', name: 'qq' },
+      {link: 'http://wpa.qq.com/msgrd?v=3&uin=605951224&site=qq&menu=yes', name: 'qq' },
       {link: 'https://www.twitter.com/wangzhenhui1992', name: 'twitter' },
   ];
 }
