@@ -12,7 +12,7 @@ import { Article } from '../../entity/article';
   selector: 'app-articlepage',
   templateUrl: './articlepage.component.html',
   styleUrls: ['./articlepage.component.scss'],
-  providers: [ArticleService, Navigator]
+  providers: [ArticleService]
 })
 export class ArticlepageComponent extends PageComponent implements OnInit {
 
