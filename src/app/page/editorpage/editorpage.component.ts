@@ -61,7 +61,19 @@ export class EditorpageComponent implements OnInit {
     const result = this.article.id ? this.articleService.updateArticle(this.article) : this.articleService.postArticle(this.article);
 
     result.subscribe(article => {
-      this.router.navigate([PagePath.ARTICLE_PAGE + '/' + article.id]);
+      if (article) {
+        this.router.navigate([PagePath.ARTICLE_PAGE + '/' + article.id]);
+      } else {
+        this.router.navigate([PagePath.ERROR_PAGE]);
+      }
+    }, error => {
+      console.log(error);
+      if (error['status'] === 401 ) {
+        this.router.navigate([PagePath.LOGIN_PAGE]);
+      } else {
+        this.router.navigate([PagePath.LOGIN_PAGE]);
+      }
+
     });
   }
 
