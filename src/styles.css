@@ -40,7 +40,7 @@
 }
 
 pre {
-  background-color: #eee !important;
+  background-color: #CEEFE1 !important;
   /* color:white !important; */
   padding : 10px;
 }
@@ -51,5 +51,8 @@ pre {
   white-space: nowrap;
   }
 
+img {
+    max-width: 100%;
+  }
 
 

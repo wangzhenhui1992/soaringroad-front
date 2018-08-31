@@ -29,7 +29,7 @@ export class EditorpageComponent implements OnInit {
     }
     const rows = this.article.content.search('\r');
     this.rows = rows > 20 ? rows : 20;
-    this.safeBody = this.domSanitizer.bypassSecurityTrustHtml(markdown.toHTML(this.article.content));
+    this.safeBody = this.domSanitizer.bypassSecurityTrustHtml(markdown.toHTML(this.article.content, 'Maruku'));
   }
 
   ngOnInit() {
@@ -91,7 +91,20 @@ export class EditorpageComponent implements OnInit {
     if (!this.label) {
       return;
     }
-    if (!this.article.labels) {
+    if (this.label.indexOf(',') > -1) {
+      const labels = this.label.split(',');
+      for (let i = 0, length = labels.length ; i < length; i++ ) {
+        const label = labels[i];
+        if (!label) {
+          continue;
+        }
+        if (!this.article.labels) {
+          this.article.labels = [label];
+        } else if (this.article.labels.indexOf(this.label) < 0) {
+          this.article.labels.push(label);
+        }
+      }
+    } else if (!this.article.labels) {
       this.article.labels = [this.label];
     } else if (this.article.labels.indexOf(this.label) < 0) {
       this.article.labels.push(this.label);
@@ -100,7 +113,6 @@ export class EditorpageComponent implements OnInit {
   }
 
   onClickLabel(value: string) {
-    console.log(value);
     if (!value) {
       return;
     }

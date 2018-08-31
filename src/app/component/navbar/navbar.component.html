@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light " role="navigation">
-  <a class="navbar-brand text-dark" href="/">
+<nav class="navbar navbar-expand-lg  bg-light " role="navigation">
+  <a class="navbar-brand text-info" href="/">
     <i class="fas fa-home"></i> {{brand}}
   </a>
   <button class="navbar-toggler" (click)="isCollapsed= !isCollapsed" type="button" data-toggle="collapse" data-target="#navbarTogglerContent"
@@ -7,7 +7,7 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarTogglerContent" [collapse]="isCollapsed">
+  <div class="collapse navbar-collapse text-primary" id="navbarTogglerContent" [collapse]="isCollapsed">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <ng-template ngFor let-item [ngForOf]="navbarItems" let-isFirst="first" let-i="index">
         <li class="nav-justified nav-item active" *ngIf="item.type === 1">

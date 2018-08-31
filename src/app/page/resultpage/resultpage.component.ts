@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Article } from '../../entity/article';
 import { ArticleService } from '../../service/article.service';
-import { ActivatedRoute, Router } from '../../../../node_modules/@angular/router';
+import { ActivatedRoute, Router, NavigationEnd } from '../../../../node_modules/@angular/router';
 import PagePath from '../../util/pagepath';
 
 @Component({
@@ -10,11 +10,22 @@ import PagePath from '../../util/pagepath';
   styleUrls: ['./resultpage.component.scss'],
   providers: [ ArticleService ]
 })
-export class ResultpageComponent implements OnInit {
-  articles: Article[] = [];
+export class ResultpageComponent implements OnInit, AfterViewInit {
+  articles: Article[];
   constructor(private articleService: ArticleService, private activedRouter: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
+    this.articles = [];
+    this.getContent();
+  }
+
+  ngAfterViewInit() {
+    this.router.events.filter(event => event instanceof NavigationEnd).subscribe(event => {
+      this.getContent();
+    });
+  }
+
+  getContent() {
     const paramClass = this.activedRouter.snapshot.params['class'];
     const paramKey = this.activedRouter.snapshot.params['key'];
     switch (paramClass) {
@@ -28,8 +39,6 @@ export class ResultpageComponent implements OnInit {
                        break;
       default : this.router.navigateByUrl(PagePath.ERROR_PAGE);
     }
-
-
   }
 
 }

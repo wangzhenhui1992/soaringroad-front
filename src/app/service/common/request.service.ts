@@ -6,7 +6,6 @@ abstract class RequestMethod {
   abstract doRequest<T>(url, parameter): Observable<T>;
   protected buildHeaders(): HttpHeaders {
     const jwt = localStorage.getItem('srjwt');
-    console.log(jwt);
     if (jwt) {
       return new HttpHeaders({
         'Content-Type' : 'application/json',
@@ -30,7 +29,6 @@ class GetMethod extends RequestMethod {
   }
   doRequest<T>(url, parameters): Observable<T> {
     const headers = this.buildHeaders();
-    console.log(headers.keys());
     return this.httpClient.get<T>(url, { params: parameters, headers: headers});
   }
 }
@@ -42,7 +40,8 @@ class PostMethod extends RequestMethod {
     this.httpClient = httpClient;
   }
   doRequest<T>(url, body): Observable<T> {
-    return this.httpClient.post<T>(url, body, { headers: this.buildHeaders()  });
+    const headers = this.buildHeaders();
+    return this.httpClient.post<T>(url, body, { headers: headers  });
   }
 }
 

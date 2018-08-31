@@ -2,7 +2,7 @@ import PagePath from './pagepath';
 export default class Setting {
   public static NAVBAR_ITEMS = [
     {
-      type: 1, name: 'JAVA', url: '/'
+      type: 1, name: 'JAVA', url: '/result/category/JAVA'
     },
     {
       type: 0, name: '人工智能', url: '',

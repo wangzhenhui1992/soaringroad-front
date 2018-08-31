@@ -5,13 +5,13 @@
           {{article.title}}
         </h1>
         <section class="text-primary">
-          <span class="col"><small>{{article.author}}</small> </span>
-          <span class="col"><small><time>{{article.date}} </time></small></span>
-          <a class="col" [routerLink]="['/result/category/'+article.category]" routerLinkActive="active"><small>{{article.category}}</small></a>
+          <a class="col" [routerLink]="['/myself']" routerLinkActive="active"><span class="badge badge-primary">{{article.author}}</span></a>
+          <a class="col" [routerLink]="['/result/category/'+article.category]" routerLinkActive="active"><span class="badge badge-primary">{{article.category}}</span></a>
+          <span class="col"><time class="badge badge-primary">{{article.date}} </time></span>
         </section>
         <section *ngIf="article.labels && article.labels.length > 0">
           <ng-template  ngFor let-item [ngForOf]="article.labels">
-              <a [routerLink]="['/result/label/'+item]" ><span  class="badge badge-primary">{{item}}</span></a>
+              <a [routerLink]="['/result/label/'+item]" ><span  class="badge badge-success">{{item}}</span></a>
           </ng-template>
         </section>
         <hr/>
