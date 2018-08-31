@@ -1,0 +1,46 @@
+.app-card-border {
+  border-width : 1px;
+  border-style :  double;
+  border-color : #868e96;
+  box-shadow: 3px 3px 3px 3px  #807e7e;
+}
+
+.app-card {
+  overflow: hidden !important;
+}
+
+.app-card>div {
+  height:100%!important;
+  margin: auto;
+}
+
+.app-card>div:hover{
+ border-color: red ;
+}
+
+.app-card-img {
+  margin: 10px;
+  min-height:200px;
+  background-size : cover !important;
+  background-position: 50% 50%;
+}
+
+.app-card-img:hover{
+  transition: all 1s ease-out;
+}
+
+.app-content {
+  background : rgba(0,0,0,.4);
+  height : 200px;
+  padding: 10px;
+  color: white;
+  opacity: 0;
+  transition: all 1s ease-out;
+  // margin-top:-200px;
+}
+
+.app-card-border:hover .app-content {
+  opacity: 1;
+  transition: all 1s;
+  // margin-top:0px;
+}

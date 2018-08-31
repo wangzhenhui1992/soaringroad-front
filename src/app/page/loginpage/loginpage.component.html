@@ -1,0 +1,34 @@
+<div class="app-container container">
+  <div class="col-10 col-sm-10 col-md-8 col-lg-8 col-xl-8  mx-auto text-left bg-light app-login-padding">
+    <div class="form-group">
+      <h1 class="col text-center">
+        <span class="text-primary">飞升之路</span>
+      </h1>
+    </div>
+    <div class="form-group">
+      <h5 class="col text-center">
+        <span class="text-danger">如果你并不是网站管理员，请自行离开。</span>
+      </h5>
+    </div>
+    <div class="form-group">
+      <label for="username">用户名</label>
+      <input type="email" class="form-control" id="username" aria-describedby="emailHelp" placeholder="请输入用户名" [(ngModel)]="username">
+      <small id="emailHelp" class="form-text text-muted">暂不提供管理员以外的账户.</small>
+    </div>
+    <div class="form-group">
+      <label for="passowrd">密码</label>
+      <input type="password" class="form-control" id="passowrd" placeholder="请输入密码" [(ngModel)]="password">
+    </div>
+    <!-- <div class="form-group form-check">
+      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+      <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    </div> -->
+    <div class="form-group">
+      <button class="btn btn-primary" (click)="auth()"> 用户名密码登陆 </button>
+      <button class="btn btn-primary" (click)="faceRecognize()"> 人脸识别登陆 </button>
+    </div>
+    <div class="form-group">
+      <h5 class="text-danger">{{message}}</h5>
+    </div>
+  </div>
+</div>

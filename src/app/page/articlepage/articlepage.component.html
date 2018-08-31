@@ -1,0 +1,24 @@
+<div class="app-container container">
+    <div class="mx-auto text-center bg-light text-dark"  *ngIf="article">
+      <article class="app-article-article">
+        <h1>
+          {{article.title}}
+        </h1>
+        <section class="text-primary">
+          <a class="col" [routerLink]="['/myself']" routerLinkActive="active"><span class="badge badge-primary">{{article.author}}</span></a>
+          <a class="col" [routerLink]="['/result/category/'+article.category]" routerLinkActive="active"><span class="badge badge-primary">{{article.category}}</span></a>
+          <span class="col"><time class="badge badge-primary">{{article.date}} </time></span>
+        </section>
+        <section *ngIf="article.labels && article.labels.length > 0">
+          <ng-template  ngFor let-item [ngForOf]="article.labels">
+              <a [routerLink]="['/result/label/'+item]" ><span  class="badge badge-success">{{item}}</span></a>
+          </ng-template>
+        </section>
+        <hr/>
+        <div class="text-left col-md-12 col-12" [innerHTML]="safeBody" ></div>
+      </article>
+    </div>
+    <div class="col-md-4 d-none d-md-block">
+      <!-- todo for menu and ads-->
+    </div>
+  </div>

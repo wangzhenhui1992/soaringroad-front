@@ -1,0 +1,22 @@
+<div class="card  app-card-border">
+    <div class="app-card-img rounded" [style.background-image]="'url('+ article.image + ')'">
+      <div class="app-content">
+        <span>{{article.summary}}</span>
+      </div>
+    </div>
+    <hr>
+    <div class="card-body" title="{{article.title}}">
+      <h5 class="line-limit-length card-title">{{article.title}}</h5>
+      <div class="row">
+          <span class="text-muted col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+            <small>{{article.category}}</small>
+          </span>
+          <span class="text-muted col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+            <small>{{article.date}}</small>
+          </span>
+      </div>
+    </div>
+    <div class="card-footer justified">
+      <a class="card-link btn btn-outline-primary" [routerLink]="['/article/'+article.id]" routerLinkActive="active">View Detail</a>
+    </div>
+  </div>

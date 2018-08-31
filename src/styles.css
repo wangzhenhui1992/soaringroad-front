@@ -1,0 +1,58 @@
+@import '../node_modules/bootstrap/dist/css/bootstrap.min.css' ;
+
+@import 'https://use.fontawesome.com/releases/v5.0.4/css/all.css';
+
+*:not(.fa,.fas,.fab):not(.gsc-search-button) {
+    font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif !important
+}
+
+.gsc-search-button>.gsc-search-button-v2  {
+  display: none !important;
+}
+
+.gsib_a {
+  padding: 0px
+}
+
+#___gcse_0 {
+  width: 100%
+}
+
+#gsc-iw-id1 {
+  border: none
+}
+
+#gsc-i-id1 {
+  top: -5px;
+}
+
+.app-container {
+  margin-top: 50px;
+  min-height: 500px;
+}
+
+.app-bg-dark {
+  background-color: black;
+}
+
+.app-bg-light {
+  background-color: #f1f1f1;
+}
+
+pre {
+  background-color: #CEEFE1 !important;
+  /* color:white !important; */
+  padding : 10px;
+}
+
+.line-limit-length {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  }
+
+img {
+    max-width: 100%;
+  }
+
+
