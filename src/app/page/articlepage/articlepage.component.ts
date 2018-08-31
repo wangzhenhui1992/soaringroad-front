@@ -7,6 +7,7 @@ import PagePath from '../../util/pagepath';
 import { RequestService } from '../../service/common/request.service';
 import { markdown } from 'markdown';
 import { Article } from '../../entity/article';
+import { MarkdownService } from '../../service/common/markdown.service';
 
 @Component({
   selector: 'app-articlepage',
@@ -20,7 +21,7 @@ export class ArticlepageComponent extends PageComponent implements OnInit {
   safeBody: SafeHtml;
 
   constructor(private router: Router, private activedRouter: ActivatedRoute, private articleService: ArticleService,
-    private domSanitizer: DomSanitizer) {
+    private domSanitizer: DomSanitizer, private markdownService: MarkdownService) {
     super();
   }
 
@@ -40,7 +41,8 @@ export class ArticlepageComponent extends PageComponent implements OnInit {
         this.router.navigate([PagePath.ERROR_PAGE]);
         return;
       }
-      this.safeBody = this.domSanitizer.bypassSecurityTrustHtml(markdown.toHTML(this.article.content));
+      this.safeBody = this.markdownService.render(this.article.content);
+      // this.safeBody = this.domSanitizer.bypassSecurityTrustHtml(markdown.toHTML(this.article.content));
 
     });
   }
