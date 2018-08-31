@@ -5,6 +5,7 @@ import { Article } from '../../entity/article';
 import { ArticleService } from '../../service/article.service';
 import { ActivatedRoute, Router } from '../../../../node_modules/@angular/router';
 import PagePath from '../../util/pagepath';
+import { MarkdownService } from '../../service/common/markdown.service';
 @Component({
   selector: 'app-editorpage',
   templateUrl: './editorpage.component.html',
@@ -16,12 +17,12 @@ export class EditorpageComponent implements OnInit {
   @Input()
   @Output()
   article: Article;
-  safeBody: SafeHtml;
+  safeBody: any;
   rows: number;
   label: string;
 
   constructor(private domSanitizer: DomSanitizer, private articleService: ArticleService,
-  private activedRouter: ActivatedRoute, private router: Router) { }
+  private activedRouter: ActivatedRoute, private router: Router, private markdownService: MarkdownService) { }
 
   convert() {
     if (!this.article || !this.article.content) {
@@ -29,7 +30,8 @@ export class EditorpageComponent implements OnInit {
     }
     const rows = this.article.content.search('\r');
     this.rows = rows > 20 ? rows : 20;
-    this.safeBody = this.domSanitizer.bypassSecurityTrustHtml(markdown.toHTML(this.article.content, 'Maruku'));
+    this.safeBody = this.markdownService.render(this.article.content);
+    // this.safeBody = this.domSanitizer.bypassSecurityTrustHtml(markdown.toHTML(this.article.content, 'Maruku'));
   }
 
   ngOnInit() {

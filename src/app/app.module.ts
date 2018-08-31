@@ -12,13 +12,12 @@ import { BsDropdownModule , TooltipModule , ModalModule ,
    ButtonsModule , CollapseModule , CarouselModule } from 'ngx-bootstrap';
 import { SearchModalComponent } from './component/search-modal/search-modal.component';
 import { EditorpageComponent } from './page/editorpage/editorpage.component';
-import {NgxEditorModule} from 'ngx-editor';
-import { LMarkdownEditorModule } from 'ngx-markdown-editor';
 import { FormsModule } from '../../node_modules/@angular/forms';
 import { LoginpageComponent } from './page/loginpage/loginpage.component';
 import { RequestService } from './service/common/request.service';
 import { SocialComponent } from './component/social/social.component';
 import { ResultpageComponent } from './page/resultpage/resultpage.component';
+import { MarkdownService } from './service/common/markdown.service';
 
 @NgModule({
   declarations: [
@@ -36,11 +35,9 @@ import { ResultpageComponent } from './page/resultpage/resultpage.component';
   ],
   imports: [
     BrowserModule,
-    NgxEditorModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    LMarkdownEditorModule,
     BsDropdownModule.forRoot(),
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
@@ -48,7 +45,7 @@ import { ResultpageComponent } from './page/resultpage/resultpage.component';
     CollapseModule.forRoot(),
     CarouselModule.forRoot(),
   ],
-  providers: [RequestService],
+  providers: [RequestService, MarkdownService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
