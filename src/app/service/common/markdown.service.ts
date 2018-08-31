@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-declare var md;
 declare function require(x: string): any;
-md = require('markdown-it')({
+
+const md = require('markdown-it')({
   html: true,        // Enable HTML tags in source
   xhtmlOut: false,        // Use '/' to close single tags (<br />).
   breaks: false,        // Convert '\n' in paragraphs into <br>
