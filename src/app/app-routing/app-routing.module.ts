@@ -6,6 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { EditorpageComponent } from '../page/editorpage/editorpage.component';
 import { LoginpageComponent } from '../page/loginpage/loginpage.component';
 import { ResultpageComponent } from '../page/resultpage/resultpage.component';
+import { MyselfpageComponent } from '../page/myselfpage/myselfpage.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'editor/:id', component: EditorpageComponent},
   { path: 'result/:class/:key', component: ResultpageComponent},
   { path: 'login', component: LoginpageComponent},
+  { path: 'myself', component: MyselfpageComponent },
   { path: '**' , redirectTo: 'error' }
 
 ];
