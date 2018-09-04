@@ -34,7 +34,7 @@ export default class Setting {
   ];
 
   // public static readonly host = 'http://www.soaringroad.com';
-  public static readonly host = 'http://localhost:8080';
+  public static readonly host = 'http://new.soaringroad.com';
 
   public static readonly apis = {
     article: '/api/article/',
