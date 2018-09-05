@@ -2,9 +2,9 @@
   <a class="navbar-brand text-info" href="/">
     <i class="fas fa-home"></i> {{brand}}
   </a>
-  <button class="navbar-toggler" (click)="isCollapsed= !isCollapsed" type="button" data-toggle="collapse" data-target="#navbarTogglerContent"
+  <button class="text-info navbar-toggler" (click)="isCollapsed= !isCollapsed" type="button" data-toggle="collapse" data-target="#navbarTogglerContent"
     aria-controls="navbarTogglerContent" aria-expanded="true" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
+    <span class="fas fa-align-justify"></span>
   </button>
 
   <div class="collapse navbar-collapse text-primary" id="navbarTogglerContent" [collapse]="isCollapsed">
@@ -17,7 +17,7 @@
         </li>
         <li class="text-left nav-justified nav-item" *ngIf="item.type === 0 " >
           <div class="dropdown nav-item" dropdown>
-            <li class="dropdown-toggle nav-link  active" href="javascript:{}" dropdownToggle id="navbarDropdown" role="button" data-toggle="dropdown"
+            <li class="dropdown-toggle nav-link  active text-left" href="javascript:{}" dropdownToggle id="navbarDropdown" role="button" data-toggle="dropdown"
               aria-haspopup="true" aria-expanded="false">
               {{item.name}}
             </li>
