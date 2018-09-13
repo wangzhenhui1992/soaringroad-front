@@ -1,4 +1,5 @@
 import PagePath from './pagepath';
+import { environment } from '../../environments/environment';
 export default class Setting {
   public static NAVBAR_ITEMS = [
     {
@@ -33,8 +34,7 @@ export default class Setting {
     }
   ];
 
-  // public static readonly host = 'http://www.soaringroad.com';
-  public static readonly host = 'http://new.soaringroad.com';
+  public static readonly host = environment.host;
 
   public static readonly apis = {
     article: '/api/article/',

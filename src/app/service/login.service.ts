@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { RequestService } from './common/request.service';
 import { Observable } from '../../../node_modules/rxjs/Observable';
 import Settings from '../util/settings';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class LoginService {
