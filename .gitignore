@@ -42,3 +42,6 @@ Thumbs.db
 
 # Angular Files
 package-lock.json
+
+# CI/CD 
+/dist/work/*
