@@ -44,4 +44,4 @@ Thumbs.db
 package-lock.json
 
 # CI/CD 
-/dist/work/*
+/work
