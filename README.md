@@ -1,3 +1,5 @@
+[![buddy pipeline](https://app.buddy.works/wangzhenhui1992/soaringroad-front/pipelines/pipeline/151791/badge.svg?token=4547ad6ed24bf33c890870fc84fe7b60afcf8bded2d23ac4b09ce39362718732 "buddy pipeline")](https://app.buddy.works/wangzhenhui1992/soaringroad-front/pipelines/pipeline/151791)
+
 # SoaringroadFront
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.1.
