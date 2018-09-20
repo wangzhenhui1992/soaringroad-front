@@ -49,5 +49,6 @@ export default class Setting {
       {link: 'https://www.qq.com/605951224', name: 'weixin' },
       {link: 'http://wpa.qq.com/msgrd?v=3&uin=605951224&site=qq&menu=yes', name: 'qq' },
       {link: 'https://www.twitter.com/wangzhenhui1992', name: 'twitter' },
+      {link: 'https://jp.linkedin.com/in/%E6%8C%AF%E8%8D%9F-%E7%8E%8B-487492140',name: 'linkedin'}
   ];
 }
