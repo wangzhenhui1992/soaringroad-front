@@ -20,13 +20,22 @@ export class HomepageComponent extends PageComponent implements OnInit {
   @HostBinding('style.padding') padding = '0 !important';
 
   articles: Article[] = [];
+  pageNumber: number;
   constructor(private articleService: ArticleService) {
     super();
+    this.pageNumber = -1;
   }
 
   ngOnInit() {
-    this.articleService.searchForHomePage().subscribe(body => {
-      this.articles = body;
+    this.nextPage();
+  }
+  nextPage() {  
+    this.pageNumber+=1;
+    this.articleService.searchForHomePage(this.pageNumber).subscribe(body => {
+      if (!body) {
+        return;
+      }
+      this.articles = this.articles.concat(body);
     } );
   }
 
