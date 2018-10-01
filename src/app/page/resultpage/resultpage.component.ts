@@ -12,29 +12,41 @@ import PagePath from '../../util/pagepath';
 })
 export class ResultpageComponent implements OnInit, AfterViewInit {
   articles: Article[];
-  constructor(private articleService: ArticleService, private activedRouter: ActivatedRoute, private router: Router) { }
+  pageNumber: number;
+  constructor(private articleService: ArticleService, private activedRouter: ActivatedRoute, private router: Router) { 
+    this.pageNumber = -1;
+  }
 
   ngOnInit() {
     this.articles = [];
-    this.getContent();
+    this.nextPage();
   }
 
   ngAfterViewInit() {
     this.router.events.filter(event => event instanceof NavigationEnd).subscribe(event => {
-      this.getContent();
+      this.articles = [];
+      this.pageNumber = -1;
+      this.nextPage();
     });
   }
 
-  getContent() {
+  nextPage() {
+    this.pageNumber += 1;
     const paramClass = this.activedRouter.snapshot.params['class'];
     const paramKey = this.activedRouter.snapshot.params['key'];
     switch (paramClass) {
-      case 'category': this.articleService.searchArticleByCategory(paramKey).toPromise().then(data => {
-                         this.articles = data;
+      case 'category': this.articleService.searchArticleByCategory(paramKey, this.pageNumber).toPromise().then(data => {
+                         if (!data) {
+                           return;
+                         }
+                         this.articles = this.articles.concat(data);
                        });
                        break;
-      case 'label': this.articleService.searchArticleByLabel(paramKey).toPromise().then(data => {
-                         this.articles = data;
+      case 'label': this.articleService.searchArticleByLabel(paramKey, this.pageNumber).toPromise().then(data => {
+                         if (!data) {
+                           return;
+                         }
+                         this.articles = this.articles.concat(data);
                        });
                        break;
       default : this.router.navigateByUrl(PagePath.ERROR_PAGE);
