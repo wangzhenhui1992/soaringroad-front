@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <title>SoaringRoad -- 王振荟的个人站点</title>
@@ -7,20 +8,15 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <!-- <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/agate.min.css" rel="stylesheet">
-  <script src="https://cdn.bootcss.com/ace/1.2.8/ace.js"></script>
-  <script src="https://cdn.bootcss.com/marked/0.3.6/marked.min.js"></script>
-  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script> -->
   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   <script>
-  // hljs.initHighlightingOnLoad();
-  (adsbygoogle = window.adsbygoogle || []).push({
-    google_ad_client: "ca-pub-2955216178814103",
-    enable_page_level_ads: true
-  });
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-2955216178814103",
+      enable_page_level_ads: true
+    });
   </script>
   <script>
-    (function() {
+    (function () {
       var cx = '003767989643328967639:d3sxwyuwt_y';
       var gcse = document.createElement('script');
       gcse.type = 'text/javascript';
@@ -28,7 +24,7 @@
       gcse.id = 'google-search';
       gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
       var s = document.getElementById('google-search');
-      if ( s ) {
+      if (s) {
         s.parentElement.replaceChild(gcse, s);
       } else {
         s = document.getElementsByTagName('script')[0];
@@ -37,7 +33,68 @@
     })();
   </script>
 </head>
+
 <body class="app-bg-light">
   <app-root></app-root>
+  <script src="//cdn.jsdelivr.net/mojs/latest/mo.min.js"></script>
+  <script src='//cdn.jsdelivr.net/mojs-player/latest/mojs-player.min.js'></script>
+  <script>
+    (function(){
+      function createBurst(color,time) {
+      const burst = new mojs.Burst({
+        left: 0, top: 0,
+        radius: { 0: 30 },
+        angle: 'rand(0, 360)',
+        timeline: { delay: time },
+        children: {
+          shape: 'line',
+          stroke: color,
+          fill: 'none',
+          scale: 1,
+          scaleX: { 1: 0 },
+          easing: 'cubic.out',
+          duration: 1000
+        }
+      });
+      return burst;
+    }
+    function createBubbles(color,time) {
+      const bubbles = new mojs.Burst({
+        left: 0, top: 0,
+        radius: 28,
+        count: 3,
+        timeline: { delay: time },
+        children: {
+          stroke: color,
+          fill: 'none',
+          scale: 1,
+          strokeWidth: { 8: 0 },
+          radius: { 0: 'rand(6, 10)' },
+          degreeShift: 'rand(-50, 50)',
+          duration: 400,
+          delay: 'rand(0, 250)',
+        }
+      });
+      return bubbles;
+    }
+    function show(burst,e) {
+      burst.tune({ x: e.pageX, y: e.pageY })
+        .generate()
+        .replay();
+    }
+    const burstFisrt = createBurst('red',0)
+    const burstSecond = createBurst('springgreen',300)
+    const bubblesFirst = createBubbles('Gold',100)
+    const bubblesSecond = createBubbles('fuchsia',400)
+    document.addEventListener('click', function (e) {
+      show(burstFisrt,e);
+      show(bubblesFirst,e);
+      show(burstSecond,e);
+      show(bubblesSecond,e);  
+    });
+    })()
+ 
+  </script>
 </body>
+
 </html>
