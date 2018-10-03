@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-lg  bg-light " role="navigation">
-  <a class="navbar-brand text-info" href="/">
-    <i class="fas fa-home"></i> {{brand}}
+<nav class="navbar navbar-expand-lg bg-light " role="navigation">
+  <a class="btn navbar-brand app-navbar-font text-primary font-weight-bold" href="/">
+    <i class="fas fa-home "></i> {{brand}}
   </a>
   <button class="text-info navbar-toggler" (click)="isCollapsed= !isCollapsed" type="button" data-toggle="collapse" data-target="#navbarTogglerContent"
     aria-controls="navbarTogglerContent" aria-expanded="true" aria-label="Toggle navigation">
@@ -10,14 +10,14 @@
   <div class="collapse navbar-collapse text-primary" id="navbarTogglerContent" [collapse]="isCollapsed">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <ng-template ngFor let-item [ngForOf]="navbarItems" let-isFirst="first" let-i="index">
-        <li class="nav-justified nav-item active" *ngIf="item.type === 1">
+        <li class="text-left nav-justified nav-item btn font-weight-bold active" *ngIf="item.type === 1">
           <a class="nav-link" routerLink="{{item.url}}">{{item.name}}
             <span *ngIf="isFirst" class="sr-only">(current)</span>
           </a>
         </li>
-        <li class="text-left nav-justified nav-item" *ngIf="item.type === 0 " >
+        <li class="text-left nav-justified  btn font-weight-bold nav-item" *ngIf="item.type === 0 " >
           <div class="dropdown nav-item" dropdown>
-            <li class="dropdown-toggle nav-link btn active text-left" href="javascript:{}" dropdownToggle id="navbarDropdown" role="button" data-toggle="dropdown"
+            <li class="dropdown-toggle nav-link active text-left" href="javascript:{}" dropdownToggle id="navbarDropdown" role="button" data-toggle="dropdown"
               aria-haspopup="true" aria-expanded="false">
               {{item.name}}
             </li>
