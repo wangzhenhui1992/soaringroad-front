@@ -22,7 +22,7 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
     this.isCollapsed = true;
-    this.brand = 'SR';
+    this.brand = 'SoaringRoad';
     this.navbarItems = Settings.NAVBAR_ITEMS;
     this.socialLists = Settings.SOCIAL_LISTS;
     this.searchBoxHtml = this.domSanitizer.bypassSecurityTrustHtml(
