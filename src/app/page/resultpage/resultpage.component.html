@@ -1,23 +1,34 @@
 <div class="container app-container">
   <div class="row app-result-panel" *ngIf="articles &&  articles.length">
     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12" *ngFor="let article of articles">
-      <div class="card">
+      <div class="card" [style.background-image]="'url(' + article.image+ ')'">
         <div class="card-body">
-          <h4 class="card-title line-limit-length">{{article.title}}</h4>
-          <p class="card-text line-limit-length">{{article.summary}}</p>
-          <a class="card-link btn btn-outline-primary" [routerLink]="['/article/'+article.id]" routerLinkActive="active">View Detail</a>
-        </div>
-        <div class="card-footer">
-            <span class="text-muted"><small>{{article.date}}</small></span>
+          <div class="app-result-card" [routerLink]="['/article/'+article.id]"  >
+              <div class="card-title">
+                <h4 class="line-limit-length">{{article.title}}</h4>
+            </div>  
+            <div class="card-text" >
+                <p class="line-limit-length">{{article.summary}}</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col text-left">
+                <a [routerLink]="['/result/category/'+article.category]" ><small class="text-success fa fa-leaf"> {{article.category}}</small></a>
+            </div>
+            <div class="col text-right">
+                <small class="text-primary far fa-clock"> {{article.date}}</small>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
   </div>
   <div class="row">
-      <p class="mx-auto">
-        <button class="btn btn-primary" (click)="nextPage()">
-          <span class="fas fa-angle-double-down">MORE</span>
-        </button>  
-      </p>
-    </div>
+    <p class="mx-auto">
+      <button class="btn btn-primary" (click)="nextPage()">
+        <span class="fas fa-angle-double-down">MORE</span>
+      </button>
+    </p>
+  </div>
 </div>
