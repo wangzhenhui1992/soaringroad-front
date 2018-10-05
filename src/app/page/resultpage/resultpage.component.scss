@@ -5,3 +5,12 @@
     padding:10px
   }
 }
+
+.card:hover {
+  background:linear-gradient(to right top,rgb(248, 118, 118),rgb(248, 224, 115),rgb(232, 252, 123),
+  rgb(253, 123, 242),rgb(119, 248, 137),rgb(20, 61, 243)) !important;
+}
+
+.app-result-card {
+  cursor:pointer
+}
