@@ -36,66 +36,38 @@
 
 <body class="app-bg-light">
   <app-root></app-root>
-  <!-- 
-  script src="//cdn.jsdelivr.net/mojs/latest/mo.min.js"></script>
-  <script src='//cdn.jsdelivr.net/mojs-player/latest/mojs-player.min.js'></script>
   <script>
-    (function(){
-      function createBurst(color,time) {
-      const burst = new mojs.Burst({
-        left: 0, top: 0,
-        radius: { 0: 30 },
-        angle: 'rand(0, 360)',
-        timeline: { delay: time },
-        children: {
-          shape: 'line',
-          stroke: color,
-          fill: 'none',
-          scale: 1,
-          scaleX: { 1: 0 },
-          easing: 'cubic.out',
-          duration: 1000
-        }
-      });
-      return burst;
-    }
-    function createBubbles(color,time) {
-      const bubbles = new mojs.Burst({
-        left: 0, top: 0,
-        radius: 28,
-        count: 3,
-        timeline: { delay: time },
-        children: {
-          stroke: color,
-          fill: 'none',
-          scale: 1,
-          strokeWidth: { 8: 0 },
-          radius: { 0: 'rand(6, 10)' },
-          degreeShift: 'rand(-50, 50)',
-          duration: 400,
-          delay: 'rand(0, 250)',
-        }
-      });
-      return bubbles;
-    }
-    function show(burst,e) {
-      burst.tune({ x: e.pageX, y: e.pageY })
-        .generate()
-        .replay();
-    }
-    const burstFisrt = createBurst('red',0)
-    const burstSecond = createBurst('springgreen',300)
-    const bubblesFirst = createBubbles('Gold',100)
-    const bubblesSecond = createBubbles('fuchsia',400)
-    document.addEventListener('click', function (e) {
-      show(burstFisrt,e);
-      show(bubblesFirst,e);
-      show(burstSecond,e);
-      show(bubblesSecond,e);  
-    });
-    })()
- 
-  </script> -->
+    onload = function() {
+    var $html = document.getElementsByTagName("html")[0];
+    var $body = document.getElementsByTagName("body")[0];
+    $html.onclick = function(e) {
+        var $elem = document.createElement("b");
+        $elem.style.zIndex = 9999;
+        $elem.style.position = "absolute";
+        $elem.style.fontFamily = 'Comic Sans MS';
+        $elem.style.select = "none";
+        var x = e.pageX;
+        var y = e.pageY;
+        $elem.style.left = x + "px";
+        $elem.style.top = y + "px";
+        clearInterval(anim);
+        $elem.innerText = 'SoaringRoad'
+        $elem.classList.add('text-danger');
+        $elem.style.fontSize = Math.random() * 10 + 10 + "px";
+        var increase = 0;
+        var anim;
+        anim = setInterval(function() {
+                if (++increase == 150) {
+                    clearInterval(anim);
+                    $body.removeChild($elem);
+                }
+                $elem.style.top = y - increase + "px";
+                $elem.style.opacity = (150 - increase) / 120;
+            }, 8);
+        $body.appendChild($elem);
+    };
+};
+  </script>
 </body>
 
 </html>
