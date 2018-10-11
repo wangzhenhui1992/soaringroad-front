@@ -41,30 +41,50 @@
     var $html = document.getElementsByTagName("html")[0];
     var $body = document.getElementsByTagName("body")[0];
     $html.onclick = function(e) {
-        var $elem = document.createElement("b");
-        $elem.style.zIndex = 9999;
-        $elem.style.position = "absolute";
-        $elem.style.fontFamily = 'Comic Sans MS';
-        $elem.style.select = "none";
+       
+        function createImage(x,y,size,transform) {
+          var $elem = document.createElement("img");
+          $elem.style.zIndex = 9999;
+          $elem.style.position = "absolute";
+          $elem.src="https://image.flaticon.com/icons/svg/1171/1171174.svg";
+          $elem.style.left = x + "px";
+          $elem.style.top = y + "px";
+          $elem.style.height =size ;
+          $elem.style.width =size ;
+          if (transform) {
+            $elem.style.transform = "scaleX(-1)";
+          }
+          return $elem;
+        } 
+        
         var x = e.pageX;
         var y = e.pageY;
-        $elem.style.left = x + "px";
-        $elem.style.top = y + "px";
+        var sizeRandom = Math.random() * 10 + 20;
+        var size =  sizeRandom+ "px";
+        var $elem1 = createImage(x,y,size,false);
+        var $elem2 = createImage(x,y,size,true);
         clearInterval(anim);
-        $elem.innerText = 'SoaringRoad'
-        $elem.classList.add('text-danger');
-        $elem.style.fontSize = Math.random() * 10 + 10 + "px";
         var increase = 0;
         var anim;
         anim = setInterval(function() {
-                if (++increase == 150) {
+                if (++increase == 100) {
                     clearInterval(anim);
-                    $body.removeChild($elem);
+                    $body.removeChild($elem1);
+                    $body.removeChild($elem2);
                 }
-                $elem.style.top = y - increase + "px";
-                $elem.style.opacity = (150 - increase) / 120;
+                $elem1.style.top = y - increase + "px";
+                $elem1.style.left = x - increase + "px";
+                $elem1.style.opacity = (100 - increase) / 120;
+                $elem1.style.height = sizeRandom + increase/5 +"px";
+                $elem1.style.width = sizeRandom + increase/5 +"px";
+                $elem2.style.top = y - increase + "px";
+                $elem2.style.left = x + increase + "px";
+                $elem2.style.opacity = (100 - increase) / 120;
+                $elem2.style.height = sizeRandom + increase/5 +"px";
+                $elem2.style.width = sizeRandom + increase/5 +"px";
             }, 8);
-        $body.appendChild($elem);
+        $body.appendChild($elem1);
+        $body.appendChild($elem2);
     };
 };
   </script>
