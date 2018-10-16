@@ -12,6 +12,21 @@
 </div>
 <hr> -->
 <div class="col article-panel">
+  <div class="row">
+    <hr class="my-auto app-hr d-lg-block d-sm-none d-none  col-md-none col-xl-4 col-lg-3">
+    <div class="loader mx-auto">
+      <div class="face">
+        <div class="circle"></div>
+      </div>
+      <div class="face">
+        <div class="circle"></div>
+      </div>
+      <div class="face">
+        <span>SoaringRoad</span>
+      </div>
+    </div>
+    <hr class="my-auto app-hr d-lg-block d-sm-none d-none  col-md-none col-xl-4 col-lg-3">
+  </div>
   <div class="col-xl-8 col-lg-8 col-md-10 col-sm-10 col-11 mx-auto">
     <div class="row">
       <div *ngFor="let article of articles" class="col-xl-4 col-sm-6 col-md-6 col-sm-12 my-4 ">
@@ -22,7 +37,7 @@
       <p class="mx-auto">
         <button class="btn btn-outline-primary" (click)="nextPage()">
           <span class="fas fa-angle-double-down">文章很精彩 我想读更多</span>
-        </button>  
+        </button>
       </p>
     </div>
   </div>
@@ -31,7 +46,7 @@
   <slide *ngFor="let article of articles"  class="col-xl-3 col-sm-6 col-md-6 col-ms-12 my-4 mx-auto">
       <app-card [article]="article" ></app-card>
   </slide> -->
-  <!-- <slide>
+<!-- <slide>
     <img src="https://static.runoob.com/images/mix/img_fjords_wide.jpg" alt="first slide" style="display: block; width: 100%;">
     <div class="carousel-caption d-none d-md-block">
       <h3>First slide label</h3>

@@ -18,3 +18,95 @@
 .article-panel {
   margin-top: 20px;
 }
+
+.loader {
+  width: 30em;
+  height: 30em;
+  font-size: 10px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .face {
+    position: absolute;
+    border-radius: 50%;
+    border-style: solid;
+    animation: animate 3s linear infinite;
+    .circle {
+      position: absolute;
+      width: 50%;
+      height: 0.1em;
+      top: 50%;
+      left: 50%;
+      background-color: transparent;
+      transform-origin: left;
+      &::before {
+        position: absolute;
+        top: -0.5em;
+        right: -0.5em;
+        content: '';
+        width: 1em;
+        height: 1em;
+        background-color: currentColor;
+        border-radius: 50%;
+        box-shadow: 0 0 2em,
+                    0 0 4em,
+                    0 0 6em,
+                    0 0 8em,
+                    0 0 10em,
+                    0 0 0 0.5em rgba(255, 255, 0, 0.1);
+      }
+    }
+    &.face:nth-child(1) {
+      width: 100%;
+      height: 100%;
+      color: blueviolet;
+      border-color: currentColor transparent transparent currentColor;
+      border-width: 0.2em 0.2em 0em 0em;
+      $deg: -45deg;
+      animation-direction: normal;
+      .circle {
+        transform: rotate($deg);
+      }
+    }
+    &.face:nth-child(2) {
+      width: 70%;
+      height: 70%;
+      color: green;
+      border-color: currentColor currentColor transparent transparent;
+      border-width: 0.2em 0em 0em 0.2em;
+      $deg: -135deg;
+      animation-direction: reverse;
+      .circle {
+        transform: rotate($deg);
+      }
+    }
+
+    &.face:nth-child(3) {
+      border-width: 0em;
+      font-family: 'Comic Sans MS' !important;
+      font-size: 3em;
+      .circle {
+        transform: rotate(-90deg);
+      }
+    }
+  }
+}
+
+@keyframes animate {
+  to {
+      transform: rotate(1turn);
+  }
+}
+
+.app-hr {
+  width: 100px;
+  top:50%;
+  border-top:10px solid !important;
+  &:nth-child(1) {
+    border-image: linear-gradient(to left,blueviolet,white) 80 30;
+  }
+  &:nth-child(3) {
+    border-image: linear-gradient(to right,blueviolet,white) 80 30;
+  }
+}
