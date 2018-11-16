@@ -1,0 +1,7 @@
+<div class="row">
+    <div *ngFor="let ads of adsList" class="col-xl-3 col-sm-6 col-md-6 col-sm-12">
+        <a [href]="ads.url"><img class="app-ads-img col img-fluid img-thumbnail " [src]="ads.image" >{{ads.text}}</a>
+    </div>
+</div>
+
+
