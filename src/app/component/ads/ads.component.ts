@@ -11,7 +11,7 @@ export class AdsComponent implements OnInit {
 
   @HostBinding('style.width') width = '100%';
 
-  private adsList: Ads[];
+  adsList: Ads[];
 
   constructor() { }
 
