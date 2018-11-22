@@ -16,6 +16,7 @@ export default class Setting {
       dropdownItems: [
         {name: 'AWS', url: '/result/category/AWS'},
         {name: '阿里云', url: '/result/category/阿里云'},
+        {name: 'Elasticsearch', url: '/result/category/Elasticsearch'},
         {name: 'Docker', url: '/result/category/Docker'},
         {name: '设计模式', url: '/result/category/设计模式'},
         {name: 'JAVA', url: '/result/category/JAVA'},
