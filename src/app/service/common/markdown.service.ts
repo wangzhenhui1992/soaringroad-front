@@ -1,7 +1,16 @@
 import { Injectable } from '@angular/core';
-declare function require(x: string): any;
+import hljs from 'highlight.js';
+import md from 'markdown-it';
 
-const md = require('markdown-it')({
+function highlight(str, __) {
+  try {
+    return '<pre><code class="hljs">' + hljs.highlightAuto(str).value + '</code></pre>';
+  } catch (__) {
+    console.log(__);
+  }
+}
+
+const markdown = md({
   html: true,        // Enable HTML tags in source
   xhtmlOut: false,        // Use '/' to close single tags (<br />).
   breaks: false,        // Convert '\n' in paragraphs into <br>
@@ -9,15 +18,17 @@ const md = require('markdown-it')({
   linkify: false,        // Autoconvert URL-like text to links
   typographer: false,
   quotes: '“”‘’',
-  highlight: function (/*str, lang*/) { return ''; }
+  highlight: highlight
 });
+
+
 @Injectable()
 export class MarkdownService {
 
   constructor() { }
 
   render(content: string) {
-    return md.render(content);
+    return markdown.render(content);
   }
 
 }

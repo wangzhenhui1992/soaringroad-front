@@ -40,8 +40,6 @@
 }
 
 pre {
-  background-color: #CEEFE1 !important;
-  /* color:white !important; */
   padding : 10px;
 }
 
@@ -60,3 +58,39 @@ img {
     transition: all 1s ease-out;
 }
 
+blockquote>p:before {
+  font-size: 2em; 
+  font-weight:bold;
+  padding:4px;
+  content: '|';
+  color: green;
+}
+
+
+
+.hljs:before{
+  font-size: 1em; 
+  display: block; 
+  padding:2px;
+  font-weight:bold;
+  width:5em;
+  margin-top:-8px;
+  margin-left:-8px;
+  margin-bottom:5px;
+  text-align:center;
+}
+.hljs.java:before{
+  content: 'JAVA';
+  color: white;
+  background: #e54d26;
+}
+.hljs.python:before{
+  content: 'PYTHON';
+  color: white;
+  background: #e54d26;
+}
+.hljs.typescript:before{
+  content: 'TypeScript';
+  color: white;
+  background: #e54d26;
+}
