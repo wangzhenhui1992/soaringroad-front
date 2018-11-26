@@ -4,8 +4,6 @@ import { PageComponent } from '../page.component';
 import { SafeHtml, DomSanitizer } from '@angular/platform-browser';
 import { ArticleService } from '../../service/article.service';
 import PagePath from '../../util/pagepath';
-import { RequestService } from '../../service/common/request.service';
-import { markdown } from 'markdown';
 import { Article } from '../../entity/article';
 import { MarkdownService } from '../../service/common/markdown.service';
 
@@ -21,7 +19,7 @@ export class ArticlepageComponent extends PageComponent implements OnInit {
   safeBody: SafeHtml;
 
   constructor(private router: Router, private activedRouter: ActivatedRoute, private articleService: ArticleService,
-    private domSanitizer: DomSanitizer, private markdownService: MarkdownService) {
+    private markdownService: MarkdownService) {
     super();
   }
 

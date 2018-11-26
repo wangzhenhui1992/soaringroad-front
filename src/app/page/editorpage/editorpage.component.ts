@@ -1,6 +1,4 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
-import { markdown } from 'markdown';
-import { SafeHtml, DomSanitizer } from '@angular/platform-browser';
 import { Article } from '../../entity/article';
 import { ArticleService } from '../../service/article.service';
 import { ActivatedRoute, Router } from '../../../../node_modules/@angular/router';
@@ -21,7 +19,7 @@ export class EditorpageComponent implements OnInit {
   rows: number;
   label: string;
 
-  constructor(private domSanitizer: DomSanitizer, private articleService: ArticleService,
+  constructor(private articleService: ArticleService,
   private activedRouter: ActivatedRoute, private router: Router, private markdownService: MarkdownService) { }
 
   convert() {
