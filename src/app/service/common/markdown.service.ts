@@ -1,10 +1,20 @@
 import { Injectable } from '@angular/core';
 import hljs from 'highlight.js';
 import md from 'markdown-it';
-
+const languageSubset = [
+  'java',
+  'python',
+  'typescript',
+  'javascript',
+  'bash',
+  'dockerfile',
+  'nginx',
+  'powershell',
+  'shell',
+  'yaml'];
 function highlight(str, __) {
   try {
-    return '<pre><code class="hljs">' + hljs.highlightAuto(str).value + '</code></pre>';
+    return '<pre><code class="hljs">' + hljs.highlightAuto(str, languageSubset).value + '</code></pre>';
   } catch (__) {
     console.log(__);
   }
@@ -20,7 +30,7 @@ const markdown = md({
   quotes: '“”‘’',
   highlight: highlight
 });
-
+markdown.renderer.rules.code_block = markdown.renderer.rules.fence;
 
 @Injectable()
 export class MarkdownService {
