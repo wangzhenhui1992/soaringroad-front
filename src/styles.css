@@ -73,7 +73,7 @@ blockquote>p:before {
   display: block; 
   padding:2px;
   font-weight:bold;
-  width:5em;
+  width:6em;
   margin-top:-8px;
   margin-left:-8px;
   margin-bottom:5px;
@@ -91,6 +91,41 @@ blockquote>p:before {
 }
 .hljs.typescript:before{
   content: 'TypeScript';
+  color: white;
+  background: #e54d26;
+}
+.hljs.javascript:before{
+  content: 'JavaScript';
+  color: white;
+  background: #e54d26;
+}
+.hljs.bash:before{
+  content: 'Bash';
+  color: white;
+  background: #e54d26;
+}
+.hljs.dockerfile:before{
+  content: 'Dockerfile';
+  color: white;
+  background: #e54d26;
+}
+.hljs.undefined:before{
+  content: 'Uncertain';
+  color: white;
+  background: #e54d26;
+}
+.hljs.powershell:before{
+  content: 'PowerShell';
+  color: white;
+  background: #e54d26;
+}
+.hljs.shell:before{
+  content: 'Shell';
+  color: white;
+  background: #e54d26;
+}
+.hljs.yaml:before{
+  content: 'Yaml';
   color: white;
   background: #e54d26;
 }

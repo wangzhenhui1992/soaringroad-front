@@ -8,13 +8,14 @@ const languageSubset = [
   'javascript',
   'bash',
   'dockerfile',
-  'nginx',
   'powershell',
   'shell',
   'yaml'];
 function highlight(str, __) {
   try {
-    return '<pre><code class="hljs">' + hljs.highlightAuto(str, languageSubset).value + '</code></pre>';
+    const highlighted =   hljs.highlightAuto(str, languageSubset);
+    console.log(highlighted);
+    return '<pre><code class="hljs '+ highlighted.language +'">' +highlighted.value + '</code></pre>';
   } catch (__) {
     console.log(__);
   }
