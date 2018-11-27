@@ -67,7 +67,7 @@ blockquote>p:before {
 }
 
 
-
+/* 
 .hljs:before{
   font-size: 1em; 
   display: block; 
@@ -128,4 +128,4 @@ blockquote>p:before {
   content: 'Yaml';
   color: white;
   background: #e54d26;
-}
+} */
