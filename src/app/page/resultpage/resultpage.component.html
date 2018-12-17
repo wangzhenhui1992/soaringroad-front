@@ -1,7 +1,7 @@
 <div class="container app-container">
   <div class="row app-result-panel" *ngIf="articles &&  articles.length">
     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12" *ngFor="let article of articles">
-      <div class="card" [style.background-image]="'url(' + article.image+ ')'">
+      <div class="card" >
         <div class="card-body">
           <div class="app-result-card" [routerLink]="['/article/'+article.id]"  >
               <div class="card-title">
