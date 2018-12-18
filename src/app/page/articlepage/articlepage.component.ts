@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PageComponent } from '../page.component';
 import { SafeHtml, DomSanitizer, Title, Meta } from '@angular/platform-browser';
@@ -13,14 +13,41 @@ import { MarkdownService } from '../../service/common/markdown.service';
   styleUrls: ['./articlepage.component.scss'],
   providers: [ArticleService]
 })
-export class ArticlepageComponent extends PageComponent implements OnInit {
+export class ArticlepageComponent extends PageComponent implements OnInit, AfterViewInit {
 
+  adsense: string = `
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-2955216178814103"
+       data-ad-slot="4960363662"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>;`
   article: Article;
   safeBody: SafeHtml;
 
   constructor(private router: Router, private activedRouter: ActivatedRoute, private articleService: ArticleService,
     private markdownService: MarkdownService, private title: Title, private meta: Meta) {
     super();
+  }
+  
+  ngAfterViewInit() {
+    let script = document.createElement('script');
+    script.async = true;
+    script.setAttribute('src', '//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js');
+    script.setAttribute('charset', 'utf-8');
+
+    const ins = document.getElementById('adsenseblock-article');
+    ins.parentNode.insertBefore(script, ins);
+
+    script = document.createElement('script');
+    script.async = true;
+    script.innerHTML = `(adsbygoogle = window.adsbygoogle || []).push({});`;
+    script.setAttribute('charset', 'utf-8');
+    ins.parentNode.appendChild(script);
   }
 
   ngOnInit() {
