@@ -1,28 +1,40 @@
 <div class="app-container container">
-    <div class="mx-auto text-center bg-light"  *ngIf="article">
-      <article class="app-article-article">
-        <h1>
-          {{article.title}}
-        </h1>
-        <section class="text-primary">
-          <a class="col" [routerLink]="['/myself']" routerLinkActive="active"><span class="badge badge-primary">{{article.author}}</span></a>
-          <a class="col" [routerLink]="['/result/category/'+article.category]" routerLinkActive="active"><span class="badge badge-primary">{{article.category}}</span></a>
-          <span class="col"><time class="badge badge-primary">{{article.date}} </time></span>
-        </section>
-        <section *ngIf="article.labels && article.labels.length > 0">
-          <ng-template  ngFor let-item [ngForOf]="article.labels">
-              <a [routerLink]="['/result/label/'+item]" ><span  class="badge badge-success">{{item}}</span></a>
-          </ng-template>
-        </section>
-        <section>
-            <small>本站文章均为原创，转载或引用请注明出处。</small>
-          </section>
-        <hr/>
-        <div class="text-left col-md-12 col-12" [innerHTML]="safeBody" ></div>
-      </article>
-    </div>
-    <hr>
-    <div class="mx-auto text-center bg-light text-dark">
-      <app-ads></app-ads>
-    </div>
+  <div class="mx-auto text-center bg-light" *ngIf="article">
+    <article class="app-article-article">
+      <h1>
+        {{article.title}}
+      </h1>
+      <section class="text-primary">
+        <a class="col" [routerLink]="['/myself']" routerLinkActive="active">
+          <span class="badge badge-primary">{{article.author}}</span>
+        </a>
+        <a class="col" [routerLink]="['/result/category/'+article.category]" routerLinkActive="active">
+          <span class="badge badge-primary">{{article.category}}</span>
+        </a>
+        <span class="col">
+          <time class="badge badge-primary">{{article.date}} </time>
+        </span>
+      </section>
+      <section *ngIf="article.labels && article.labels.length > 0">
+        <ng-template ngFor let-item [ngForOf]="article.labels">
+          <a [routerLink]="['/result/label/'+item]">
+            <span class="badge badge-success">{{item}}</span>
+          </a>
+        </ng-template>
+      </section>
+      <section>
+        <small>本站文章均为原创，转载或引用请注明出处。</small>
+      </section>
+      <hr/>
+      <div class="text-left col-md-12 col-12" [innerHTML]="safeBody"></div>
+    </article>
   </div>
+  <hr>
+  <div >
+    <ins id="adsenseblock-article" class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2955216178814103" data-ad-slot="4960363662" data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  </div>
+  <!-- <div class="mx-auto text-center bg-light text-dark">
+    <app-ads></app-ads>
+  </div> -->
+</div>
