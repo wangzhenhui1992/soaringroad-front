@@ -18,6 +18,7 @@ export class EditorpageComponent implements OnInit {
   safeBody: any;
   rows: number;
   label: string;
+  keyword: string;
 
   constructor(private articleService: ArticleService,
   private activedRouter: ActivatedRoute, private router: Router, private markdownService: MarkdownService) { }
@@ -122,5 +123,42 @@ export class EditorpageComponent implements OnInit {
     }
     this.article.labels.splice(this.article.labels.indexOf(value), 1);
   }
+  
+  onAddKeyword() {
+    if (!this.keyword) {
+      return;
+    }
+    if (this.keyword.indexOf(',') > -1) {
+      const keywords = this.keyword.split(',');
+      for (let i = 0, length = keywords.length ; i < length; i++ ) {
+        const keyword = keywords[i];
+        if (!keyword) {
+          continue;
+        }
+        if (!this.article.keywords) {
+          this.article.keywords = [keyword];
+        } else if (this.article.keywords.indexOf(this.keyword) < 0) {
+          this.article.keywords.push(keyword);
+        }
+      }
+    } else if (!this.article.keywords) {
+      this.article.keywords = [this.keyword];
+    } else if (this.article.keywords.indexOf(this.keyword) < 0) {
+      this.article.keywords.push(this.keyword);
+    }
+    this.keyword = '';
+  }
+
+  onClickKeyword(value: string) {
+    if (!value) {
+      return;
+    }
+    if (this.article.keywords.length === 1) {
+      this.article.keywords = [];
+      return;
+    }
+    this.article.keywords.splice(this.article.keywords.indexOf(value), 1);
+  }
+  
 
 }
