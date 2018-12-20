@@ -50,6 +50,21 @@
       </a>
     </div>
     <br/>
+    <div class="text-left mx-auto text-dark row">
+      <h4>关键字</h4>
+    </div>
+    <div class="mx-auto text-center  text-dark  row">
+      <input [(ngModel)]="keyword" class="col-md-6 col-sm-6 col-6 col-lg-6  app-editor-border" placeholder="请输入关键字">
+      <button class="btn btn-primary" (click)="onAddKeyword()"> 添加 </button>
+    </div>
+    <br/>
+    <div class="mx-auto text-center  text-dark  row" *ngIf="this.article.keywords && this.article.keywords.length > 0">
+      <a *ngFor="let keyword of this.article.keywords" style="cursor:hand" href="javascript:{}" (click)="onClickKeyword(keyword)" class="badge badge-success app-editor-badge">
+        <span class="">{{keyword}}</span>
+      </a>
+    </div>
+
+    <br/>
     <div class="mx-auto text-center  text-dark  row">
       <button class="btn btn-primary" (click)="onSubmit()"> 提交 </button>
     </div>

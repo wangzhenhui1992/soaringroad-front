@@ -33,7 +33,7 @@ export class ArticlepageComponent extends PageComponent implements OnInit, After
     private markdownService: MarkdownService, private title: Title, private meta: Meta) {
     super();
   }
-  
+
   ngAfterViewInit() {
     let script = document.createElement('script');
     script.async = true;
@@ -68,8 +68,9 @@ export class ArticlepageComponent extends PageComponent implements OnInit, After
       }
       this.title.setTitle(this.article.title);
       this.safeBody = this.markdownService.render(this.article.content);
+      const keywords = Array.from(new Set(this.article.labels.concat(this.article.keywords)));
       this.meta.getTag('name="description"').setAttribute("content",this.article.summary);
-      this.meta.addTag({ name: 'keywords', content: this.article.labels.join(",")+","+this.article.category});
+      this.meta.addTag({ name: 'keywords', content: keywords.join(",")+","+this.article.category});
       // this.safeBody = this.domSanitizer.bypassSecurityTrustHtml(markdown.toHTML(this.article.content));
 
     });

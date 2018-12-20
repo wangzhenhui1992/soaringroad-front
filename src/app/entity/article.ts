@@ -10,4 +10,5 @@ export class Article {
   summary: string;
   labels: string[];
   image: string;
+  keywords: string[];
 }
