@@ -7,6 +7,7 @@ import { EditorpageComponent } from '../page/editorpage/editorpage.component';
 import { LoginpageComponent } from '../page/loginpage/loginpage.component';
 import { ResultpageComponent } from '../page/resultpage/resultpage.component';
 import { MyselfpageComponent } from '../page/myselfpage/myselfpage.component';
+import { QuestionpageComponent } from '../page/questionpage/questionpage.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'result/:class/:key', component: ResultpageComponent},
   { path: 'login', component: LoginpageComponent},
   { path: 'myself', component: MyselfpageComponent },
+  { path: 'question', component: QuestionpageComponent },
   { path: '**' , redirectTo: 'error' }
 
 ];

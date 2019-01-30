@@ -20,6 +20,7 @@ import { ResultpageComponent } from './page/resultpage/resultpage.component';
 import { MarkdownService } from './service/common/markdown.service';
 import { MyselfpageComponent } from './page/myselfpage/myselfpage.component';
 import { AdsComponent } from './component/ads/ads.component';
+import { QuestionpageComponent } from './page/questionpage/questionpage.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { AdsComponent } from './component/ads/ads.component';
     SocialComponent,
     ResultpageComponent,
     MyselfpageComponent,
-    AdsComponent
+    AdsComponent,
+    QuestionpageComponent
   ],
   imports: [
     BrowserModule,
