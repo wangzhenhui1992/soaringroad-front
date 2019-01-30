@@ -5,5 +5,5 @@
 
 export const environment = {
   production : false ,
-  host : 'http://www.soaringroad.com'
+  host : 'https://www.soaringroad.com'
 };

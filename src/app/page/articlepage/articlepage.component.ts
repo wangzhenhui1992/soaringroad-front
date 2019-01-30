@@ -35,19 +35,19 @@ export class ArticlepageComponent extends PageComponent implements OnInit, After
   }
 
   ngAfterViewInit() {
-    let script = document.createElement('script');
-    script.async = true;
-    script.setAttribute('src', '//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js');
-    script.setAttribute('charset', 'utf-8');
+    // let script = document.createElement('script');
+    // script.async = true;
+    // script.setAttribute('src', '//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js');
+    // script.setAttribute('charset', 'utf-8');
 
-    const ins = document.getElementById('adsenseblock-article');
-    ins.parentNode.insertBefore(script, ins);
+    // const ins = document.getElementById('adsenseblock-article');
+    // ins.parentNode.insertBefore(script, ins);
 
-    script = document.createElement('script');
-    script.async = true;
-    script.innerHTML = `(adsbygoogle = window.adsbygoogle || []).push({});`;
-    script.setAttribute('charset', 'utf-8');
-    ins.parentNode.appendChild(script);
+    // script = document.createElement('script');
+    // script.async = true;
+    // script.innerHTML = `(adsbygoogle = window.adsbygoogle || []).push({});`;
+    // script.setAttribute('charset', 'utf-8');
+    // ins.parentNode.appendChild(script);
   }
 
   ngOnInit() {

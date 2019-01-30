@@ -38,7 +38,8 @@ export default class Setting {
     article: '/api/article/',
     admin: {
       login : '/api/admin/login',
-      article: '/api/admin/article/'
+      article: '/api/admin/article/',
+      question: '/api/admin/awsquestion/'
     }
   };
 

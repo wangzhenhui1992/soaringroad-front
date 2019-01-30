@@ -1,0 +1,34 @@
+<div class="app-container container">
+  <div class="mx-auto container text-center bg-light" *ngIf="question">
+    <p class="col-xl-10 col-lg-10 col-md-11 col-sm-12 col-12  mx-auto text-left" [innerHtml]="question.question"></p>
+    <p class="col-xl-10 col-lg-10 col-md-11 col-sm-12 col-12  mx-auto text-left" *ngIf="!showAnswer">
+      Answer this question:
+      <ng-container *ngIf="question.answer.length==1">
+          <select [(ngModel)]="answer" (change)="change($event.target.value)">
+              <option value=""></option>
+              <option value="A">A</option>
+              <option value="B">B</option>
+              <option value="C">C</option>
+              <option value="D">D</option>
+            </select>
+      </ng-container>
+      <ng-container *ngIf="question.answer.length>1">
+          <input [value]="answer" size="5">
+      </ng-container>
+
+    </p>
+    <button class="btn btn-primary" (click)="commit()">submit</button>
+    <button class="btn btn-primary" (click)="next()">next</button>
+    <ng-container *ngIf="showAnswer&&question">
+      <h5 class="col-xl-10 col-lg-10 col-md-11 col-sm-12 col-12  mx-auto text-left">CorectAnswer:</h5>
+      <p class="col-xl-10 col-lg-10 col-md-11 col-sm-12 col-12  mx-auto text-left">{{question.answer}}</p>
+      <h5 class="col-xl-10 col-lg-10 col-md-11 col-sm-12 col-12  mx-auto text-left">YourAnswer:</h5>
+      <p class="col-xl-10 col-lg-10 col-md-11 col-sm-12 col-12  mx-auto text-left">{{answer}}</p>
+      <h5 class="col-xl-10 col-lg-10 col-md-11 col-sm-12 col-12  mx-auto text-left">Explaination:</h5>
+      <p class="col-xl-10 col-lg-10 col-md-11 col-sm-12 col-12  mx-auto text-left" [innerHtml]="question.explaination"></p>
+      <h5 class="col-xl-10 col-lg-10 col-md-11 col-sm-12 col-12  mx-auto text-left">Reference:</h5>
+      <p class="col-xl-10 col-lg-10 col-md-11 col-sm-12 col-12  mx-auto text-left" [innerHtml]="question.reference"></p>
+    </ng-container>
+
+  </div>
+</div>
