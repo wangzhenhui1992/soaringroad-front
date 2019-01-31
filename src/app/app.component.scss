@@ -1,3 +1,11 @@
-// hr {
-//   border-color: rgba(255,255,255, 0.5);
-// }
+.tech-area {
+    >div {
+        padding: 5px;
+        >svg {
+            background-color: white;
+            padding: 5px;
+        }
+    }
+    
+    
+}
