@@ -25,7 +25,6 @@ export class QuestionpageComponent implements OnInit {
   next(): void {
     let id = Math.floor(Math.random()*857)+1;
     let observable = this.questionService.get(id);
-    observable.subscribe();
     if (!observable) {
       this.router.navigate([PagePath.ERROR_PAGE]);
       return;
