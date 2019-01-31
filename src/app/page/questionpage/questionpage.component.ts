@@ -23,6 +23,9 @@ export class QuestionpageComponent implements OnInit {
   }
 
   next(): void {
+    if (!this.showAnswer && this.question != null) {
+      return;
+    }
     let id = Math.floor(Math.random()*857)+1;
     let observable = this.questionService.get(id);
     if (!observable) {
@@ -44,6 +47,9 @@ export class QuestionpageComponent implements OnInit {
   }
 
   commit() {
+    if (this.showAnswer) {
+      return ;
+    }
     this.showAnswer = true;
   }
 
