@@ -4,20 +4,15 @@ import { Ads } from '../entity/ads';
 export default class Setting {
   public static NAVBAR_ITEMS = [
     {
-      type: 0, name: '人工智能', url: '',
-      dropdownItems: [
-        {name: 'Tensorflow', url: '/result/category/Tensorflow'},
-        {name: 'DeepLearning.ai', url: '/result/category/DeepLearning.ai'},
-        {name: '人工智能-其他', url: '/result/category/人工智能-其他'}
-      ]
-    },
-    {
-      type: 0, name: '架构', url: '/',
+      type: 0, name: '技术博文', url: '/',
       dropdownItems: [
         {name: 'AWS', url: '/result/category/AWS'},
         {name: '阿里云', url: '/result/category/阿里云'},
         {name: 'Elasticsearch', url: '/result/category/Elasticsearch'},
         {name: 'Docker', url: '/result/category/Docker'},
+        {name: 'Tensorflow', url: '/result/category/Tensorflow'},
+        {name: 'DeepLearning.ai', url: '/result/category/DeepLearning.ai'},
+        {name: '人工智能-其他', url: '/result/category/人工智能-其他'},
         {name: '设计模式', url: '/result/category/设计模式'},
         {name: 'JAVA', url: '/result/category/JAVA'},
         {name: '前端', url: '/result/category/前端'},
