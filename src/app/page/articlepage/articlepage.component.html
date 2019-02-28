@@ -25,7 +25,20 @@
       <section>
         <small>本站文章均为原创，转载或引用请注明出处。</small>
       </section>
-      <hr/>
+      <section>
+        <div class="mx-auto text-left bg-light text-danger">
+          <a class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" [routerLink]="['/article/'+ preArticle.id]"
+            routerLinkActive="active" *ngIf="preArticle">
+            <span class="text-danger"> 上一篇: {{preArticle.title}}</span>
+          </a></div>
+        <div class="mx-auto text-left bg-light text-danger">
+          <a class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" [routerLink]="['/article/' + nextArticle.id]"
+            routerLinkActive="active" *ngIf="nextArticle">
+            <span class="text-danger"> 下一篇: {{nextArticle.title}}</span>
+          </a>
+        </div>
+      </section>
+      <hr />
       <div class="text-left col-md-12 col-12" [innerHTML]="safeBody"></div>
     </article>
   </div>
@@ -36,5 +49,17 @@
   </div> -->
   <div class="mx-auto text-center bg-light text-dark">
     <app-ads></app-ads>
+  </div>
+  <br>
+  <div class="mx-auto text-left bg-light text-danger">
+    <a class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" [routerLink]="['/article/'+ preArticle.id]"
+      routerLinkActive="active" *ngIf="preArticle">
+      <span class="text-danger"> 上一篇: {{preArticle.title}}</span>
+    </a></div>
+  <div class="mx-auto text-left bg-light text-danger">
+    <a class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" [routerLink]="['/article/' + nextArticle.id]"
+      routerLinkActive="active" *ngIf="nextArticle">
+      <span class="text-danger"> 下一篇: {{nextArticle.title}}</span>
+    </a>
   </div>
 </div>
