@@ -66,6 +66,8 @@ export class ArticlepageComponent extends PageComponent implements OnInit, After
   }
 
   getPreAndNextArticle(articleId: number) {
+    this.preArticle = null;
+    this.nextArticle = null;
     this.articleService.count().toPromise().then(count => {
       this.getPreArticle(articleId);
       this.getNextArticle(articleId, count);
