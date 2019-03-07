@@ -35,6 +35,9 @@ export default class Setting {
       login : '/api/admin/login',
       article: '/api/admin/article/',
       question: '/api/admin/awsquestion/'
+    },
+    view: {
+      count: '/api/view/viewcount'
     }
   };
 
