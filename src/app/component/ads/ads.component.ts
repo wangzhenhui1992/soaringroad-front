@@ -1,11 +1,13 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { Ads } from '../../entity/ads';
 import Settings from '../../util/settings';
+import { AdsService } from '../../service/ads.service';
 
 @Component({
   selector: 'app-ads',
   templateUrl: './ads.component.html',
-  styleUrls: ['./ads.component.scss']
+  styleUrls: ['./ads.component.scss'],
+  providers: [AdsService]
 })
 export class AdsComponent implements OnInit {
 
@@ -13,12 +15,18 @@ export class AdsComponent implements OnInit {
 
   adsList: Ads[];
 
-  constructor() { }
+  constructor(private adsService: AdsService) { }
 
   ngOnInit() {
-    const remove = Math.floor(Math.random()*4)+1;
-    this.adsList = Settings.ADS_LIST;
-    this.adsList.splice(remove,1)
+    this.adsService.searchForArticle().subscribe(body => {
+      this.adsList = [body[0], body[1]];
+      const length = body.length;
+      let random = Math.floor(Math.random() * (length - 2)) + 2;
+      this.adsList.push(body[random]);
+      random = Math.floor(Math.random() * (length - 3)) + 2;
+      this.adsList.push(body[random]);
+    });
+
   }
 
 }

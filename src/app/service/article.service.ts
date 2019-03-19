@@ -21,20 +21,20 @@ export class ArticleService {
   }
 
   public searchForHomePage(pageNumber: number = 0): Observable<Article[]> {
-    const query = '{' + (pageNumber ? '"pageNumber":' + pageNumber +',' : '')
+    const query = '{' + (pageNumber ? '"pageNumber":' + pageNumber + ',' : '')
       + '"queryNumber":18,' + '"querySort":[{"name":"id","sortOrder":"DESC"}]}';
     return this.search(query);
   }
 
   public searchArticleByCategory(category: string, pageNumber: number = 0): Observable<Article[]> {
-    const query = '{' + (pageNumber ? '"pageNumber":' + pageNumber +',' : '')
+    const query = '{' + (pageNumber ? '"pageNumber":' + pageNumber + ',' : '')
       + '"queryNumber":20,"queryConditions":[{"name":"category","option":"EQ","value":"' + category + '"}],'
       + '"querySort":[{"name":"id","sortOrder":"DESC"}]}';
     return this.search(query);
   }
 
   public searchArticleByLabel(label: string, pageNumber: number = 0): Observable<Article[]> {
-    const query = '{' + (pageNumber ? '"pageNumber":' + pageNumber+',' : '')
+    const query = '{' + (pageNumber ? '"pageNumber":' + pageNumber + ',' : '')
       + '"queryNumber":20,"queryConditions":[{"name":"labels","option":"MEMBER","value":"' + label + '"}],'
       + '"querySort":[{"name":"id","sortOrder":"DESC"}]}';
     return this.search(query);

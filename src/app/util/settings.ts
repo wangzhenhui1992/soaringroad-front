@@ -34,11 +34,13 @@ export default class Setting {
     admin: {
       login : '/api/admin/login',
       article: '/api/admin/article/',
-      question: '/api/admin/awsquestion/'
+      question: '/api/admin/awsquestion/',
+      ads: '/api/admin/advertisement/'
     },
     view: {
       count: '/api/view/viewcount'
-    }
+    },
+    ads: '/api/advertisement/'
   };
 
   public static SOCIAL_LISTS = [
@@ -49,31 +51,36 @@ export default class Setting {
       {link: 'https://jp.linkedin.com/in/%E6%8C%AF%E8%8D%9F-%E7%8E%8B-487492140',name: 'linkedin'}
   ];
 
-  public static readonly ADS_LIST: Ads[] = [
-    {
-      image: "https://github.com/wangzhenhui1992/soaringroad-static/blob/master/uploads/2018/03/u7745795363050105367fm27gp01.jpg?raw=true", 
-      url: "https://promotion.aliyun.com/ntms/yunparter/invite.html?userCode=4hc87dcs",
-      text: "1880优惠券"
-    },
-    {
-      image: "https://img.alicdn.com/tfs/TB1xXiupAvoK1RjSZPfXXXPKFXa-798-470.png", 
-      url: "https://promotion.aliyun.com/ntms/act/ecsjianzhan.html?userCode=4hc87dcs",
-      text: "性能级主机2-5折"
-    },
-    {
-      image: "https://img.alicdn.com/tfs/TB1aDXhXpzqK1RjSZFvXXcB7VXa-259-194.jpg", 
-      url: "https://promotion.aliyun.com/ntms/act/enterprise-discount.html?userCode=4hc87dcs",
-      text: "弹性计算全场6折"
-    },
-    {
-      image: "https://img.alicdn.com/tfs/TB17qJhXpzqK1RjSZFvXXcB7VXa-200-126.jpg", 
-      url: "https://promotion.aliyun.com/ntms/act/qwbk.html?userCode=4hc87dcs",
-      text: "云主机2折"
-    },
-    {
-      image: "https://img.alicdn.com/tfs/TB1TFUulmzqK1RjSZFLXXcn2XXa-200-126.png", 
-      url: "https://promotion.aliyun.com/ntms/act/shoppingcart.html?userCode=4hc87dcs",
-      text: "满1000减50"
-    }
-  ];
+  // public static readonly ADS_LIST: Ads[] = [
+  //   {
+  //     image: 'https://github.com/wangzhenhui1992/soaringroad-static/blob/master/uploads/2018/03/u7745795363050105367fm27gp01.jpg?raw=true', 
+  //     url: 'https://promotion.aliyun.com/ntms/yunparter/invite.html?userCode=4hc87dcs',
+  //     text: '1880优惠券'
+  //   },
+  //   {
+  //     image: 'https://img.alicdn.com/tfs/TB1fKltMkPoK1RjSZKbXXX1IXXa-2880-990.jpg',
+  //     url: 'https://cn.aliyun.com/acts/product-section-2019/new-users?spm=5176.11533457.1089570.1.15da77e3OR7w6p&userCode=4hc87dcs',
+  //     text: '开年HI购季'
+  //   },
+  //   {
+  //     image: 'https://img.alicdn.com/tfs/TB1xXiupAvoK1RjSZPfXXXPKFXa-798-470.png', 
+  //     url: 'https://promotion.aliyun.com/ntms/act/ecsjianzhan.html?userCode=4hc87dcs',
+  //     text: '性能级主机2-5折'
+  //   },
+  //   {
+  //     image: 'https://img.alicdn.com/tfs/TB1aDXhXpzqK1RjSZFvXXcB7VXa-259-194.jpg', 
+  //     url: 'https://promotion.aliyun.com/ntms/act/enterprise-discount.html?userCode=4hc87dcs',
+  //     text: '弹性计算全场6折'
+  //   },
+  //   {
+  //     image: 'https://img.alicdn.com/tfs/TB17qJhXpzqK1RjSZFvXXcB7VXa-200-126.jpg', 
+  //     url: 'https://promotion.aliyun.com/ntms/act/qwbk.html?userCode=4hc87dcs',
+  //     text: '云主机2折'
+  //   },
+  //   {
+  //     image: 'https://img.alicdn.com/tfs/TB1TFUulmzqK1RjSZFLXXcn2XXa-200-126.png', 
+  //     url: 'https://promotion.aliyun.com/ntms/act/shoppingcart.html?userCode=4hc87dcs',
+  //     text: '满1000减50'
+  //   }
+  // ];
 }
