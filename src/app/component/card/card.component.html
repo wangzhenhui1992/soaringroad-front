@@ -1,11 +1,15 @@
-<div class="card  app-card-border app-scale">
+<div class="card  app-card-border app-scale" [ngClass]="{'popular-card':popular}">
+  <div class="popular-badge" *ngIf="popular" >
+<img width="100" height="100" src="https://github.com/wangzhenhui1992/soaringroad-static/blob/master/soaringroad/popular2.png?raw=true" class="attachment-full size-full" alt="热门文章" >
+  </div>
   <div class="app-card-img rounded" [style.background-image]="'url('+ article.image + ')'">
     <div class="app-content">
       <span>{{article.summary}}</span>
     </div>
   </div>
   <div class="card-body" title="{{article.title}}">
-    <h5 class="line-limit-length card-title">{{article.title}}</h5>
+    <h5 class="line-limit-length card-title">
+      {{article.title}}</h5>
     <div class="row">
       <span class="text-muted col text-left">
         <small>{{article.category}}</small>

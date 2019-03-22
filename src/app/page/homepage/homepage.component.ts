@@ -22,6 +22,7 @@ export class HomepageComponent extends PageComponent implements OnInit {
   @HostBinding('style.padding') padding = '0 !important';
 
   articles: Article[] = [];
+  popularArticles: Article[] = [];
   view = 0;
   pageNumber: number;
   constructor(private articleService: ArticleService, private viewService: ViewService) {
@@ -31,7 +32,17 @@ export class HomepageComponent extends PageComponent implements OnInit {
 
   ngOnInit() {
     this.loadView();
+    this.loadPopularArticles();
     this.nextPage();
+  }
+
+  loadPopularArticles() {
+    this.articleService.searchForPopRank(0).subscribe(body => {
+      if (!body) {
+        return;
+      }
+      this.popularArticles = body;
+    } );
   }
 
   loadView() {

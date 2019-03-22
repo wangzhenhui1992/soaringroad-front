@@ -20,6 +20,12 @@ export class ArticleService {
     return this.requestService.doRequestMain<Article[]>(url, null, 'get');
   }
 
+  public searchForPopRank(pageNumber: number = 0): Observable<Article[]> {
+    const query = '{' + (pageNumber ? '"pageNumber":' + pageNumber + ',' : '')
+      + '"queryNumber":6,' + '"querySort":[{"name":"view","sortOrder":"DESC"}]}';
+    return this.search(query);
+  }
+
   public searchForHomePage(pageNumber: number = 0): Observable<Article[]> {
     const query = '{' + (pageNumber ? '"pageNumber":' + pageNumber + ',' : '')
       + '"queryNumber":18,' + '"querySort":[{"name":"id","sortOrder":"DESC"}]}';

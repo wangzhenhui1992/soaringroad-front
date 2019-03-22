@@ -12,6 +12,8 @@ export class CardComponent implements OnInit {
   @HostBinding('style.width') width = '100%';
   @Input()
    article: Article;
+   @Input()
+   popular = false;
 
   constructor() { }
 
