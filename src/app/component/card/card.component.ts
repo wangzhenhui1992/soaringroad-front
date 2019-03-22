@@ -13,7 +13,7 @@ export class CardComponent implements OnInit {
   @Input()
    article: Article;
    @Input()
-   popular = false;
+   badge = '';
 
   constructor() { }
 

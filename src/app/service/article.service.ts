@@ -28,7 +28,7 @@ export class ArticleService {
 
   public searchForHomePage(pageNumber: number = 0): Observable<Article[]> {
     const query = '{' + (pageNumber ? '"pageNumber":' + pageNumber + ',' : '')
-      + '"queryNumber":18,' + '"querySort":[{"name":"id","sortOrder":"DESC"}]}';
+      + '"queryNumber":12,' + '"querySort":[{"name":"id","sortOrder":"DESC"}]}';
     return this.search(query);
   }
 
