@@ -22,7 +22,7 @@ export class ArticleService {
 
   public searchForPopRank(pageNumber: number = 0): Observable<Article[]> {
     const query = '{' + (pageNumber ? '"pageNumber":' + pageNumber + ',' : '')
-      + '"queryNumber":6,' + '"querySort":[{"name":"view","sortOrder":"DESC"}]}';
+      + '"queryNumber":3,' + '"querySort":[{"name":"view","sortOrder":"DESC"}]}';
     return this.search(query);
   }
 
