@@ -22,27 +22,31 @@ export class ArticleService {
 
   public searchForPopRank(pageNumber: number = 0): Observable<Article[]> {
     const query = '{' + (pageNumber ? '"pageNumber":' + pageNumber + ',' : '')
-      + '"queryNumber":3,' + '"querySort":[{"name":"view","sortOrder":"DESC"}]}';
+      + '"queryNumber":3,' + '"querySort":[{"name":"view","sortOrder":"DESC"}],'
+      + '"fetchSource":[ "id", "category", "title", "summary", "image", "date", "view" ]}';
     return this.search(query);
   }
 
   public searchForHomePage(pageNumber: number = 0): Observable<Article[]> {
     const query = '{' + (pageNumber ? '"pageNumber":' + pageNumber + ',' : '')
-      + '"queryNumber":12,' + '"querySort":[{"name":"id","sortOrder":"DESC"}]}';
+      + '"queryNumber":12,' + '"querySort":[{"name":"id","sortOrder":"DESC"}],'
+      + '"fetchSource":[ "id", "category", "title", "summary", "image", "date", "view" ]}';
     return this.search(query);
   }
 
   public searchArticleByCategory(category: string, pageNumber: number = 0): Observable<Article[]> {
     const query = '{' + (pageNumber ? '"pageNumber":' + pageNumber + ',' : '')
       + '"queryNumber":20,"queryConditions":[{"name":"category","option":"EQ","value":"' + category + '"}],'
-      + '"querySort":[{"name":"id","sortOrder":"DESC"}]}';
+      + '"querySort":[{"name":"id","sortOrder":"DESC"}],'
+      + '"fetchSource":[ "id", "category", "title", "summary", "image", "date", "view" ]}';
     return this.search(query);
   }
 
   public searchArticleByLabel(label: string, pageNumber: number = 0): Observable<Article[]> {
     const query = '{' + (pageNumber ? '"pageNumber":' + pageNumber + ',' : '')
       + '"queryNumber":20,"queryConditions":[{"name":"labels","option":"MEMBER","value":"' + label + '"}],'
-      + '"querySort":[{"name":"id","sortOrder":"DESC"}]}';
+      + '"querySort":[{"name":"id","sortOrder":"DESC"}],'
+      + '"fetchSource":[ "id", "category", "title", "summary", "image", "date", "view" ]}';
     return this.search(query);
   }
 
