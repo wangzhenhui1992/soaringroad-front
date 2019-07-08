@@ -4,6 +4,7 @@ import { HostBinding } from '@angular/core';
 import { Article } from '../../entity/article';
 import { ArticleService } from '../../service/article.service';
 import { CarouselConfig } from 'ngx-bootstrap/carousel';
+import { ViewService } from '../../service/view.service';
 
 @Component({
   selector: 'app-homepage',
@@ -11,7 +12,8 @@ import { CarouselConfig } from 'ngx-bootstrap/carousel';
   styleUrls: ['./homepage.component.scss'],
   providers:
     [ ArticleService,
-       { provide: CarouselConfig, useValue: { interval: 2000, noPause: false, showIndicators: true } }
+       { provide: CarouselConfig, useValue: { interval: 2000, noPause: false, showIndicators: true } },
+      ViewService
     ]
 })
 export class HomepageComponent extends PageComponent implements OnInit {
@@ -20,17 +22,40 @@ export class HomepageComponent extends PageComponent implements OnInit {
   @HostBinding('style.padding') padding = '0 !important';
 
   articles: Article[] = [];
+  popularArticles: Article[] = [];
+  view = 0;
   pageNumber: number;
-  constructor(private articleService: ArticleService) {
+  constructor(private articleService: ArticleService, private viewService: ViewService) {
     super();
     this.pageNumber = -1;
   }
 
   ngOnInit() {
+    this.loadView();
+    this.loadPopularArticles();
     this.nextPage();
   }
-  nextPage() {  
-    this.pageNumber+=1;
+
+  loadPopularArticles() {
+    this.articleService.searchForPopRank(0).subscribe(body => {
+      if (!body) {
+        return;
+      }
+      this.popularArticles = body;
+    } );
+  }
+
+  loadView() {
+    this.viewService.viewcount().subscribe(data => {
+      if (!data) {
+        return;
+      }
+      this.view = data;
+    });
+  }
+
+  nextPage() {
+    this.pageNumber += 1;
     this.articleService.searchForHomePage(this.pageNumber).subscribe(body => {
       if (!body) {
         return;

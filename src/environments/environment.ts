@@ -5,5 +5,5 @@
 
 export const environment = {
   production : false ,
-  host : 'https://www.soaringroad.com'
+  host : 'http://localhost:8080'
 };

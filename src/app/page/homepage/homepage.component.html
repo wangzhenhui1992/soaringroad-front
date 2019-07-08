@@ -26,17 +26,38 @@
       </div>
     </div>
     <hr class="my-auto app-hr d-lg-block d-sm-none d-none  col-md-none col-xl-4 col-lg-3">
+
+    <div class="col-xl-8 col-lg-8 col-md-10 col-sm-10 col-11 mx-auto text-center text-primary">
+      <br>
+      <p> <span>欢迎你 第</span><span class="text-warning">{{view}}</span><span>位 访客!</span></p>
+      <br>
+    </div>
   </div>
+
+  <div class="col-xl-8 col-lg-8 col-md-10 col-sm-10 col-11 mx-auto text-center text-primary">
+      <a
+        href="https://www.aliyun.com/acts/hi618/index?userCode=4hc87dcs">
+        <img src="https://img.alicdn.com/tfs/TB1.f.ec8aE3KVjSZLeXXXsSFXa-2880-800.jpg">
+      </a>
+    </div>
   <div class="col-xl-8 col-lg-8 col-md-10 col-sm-10 col-11 mx-auto">
     <div class="row">
-      <div *ngFor="let article of articles" class="col-xl-4 col-sm-6 col-md-6 col-sm-12 my-4 ">
-        <app-card [article]="article"></app-card>
+      <div *ngFor="let article of popularArticles" class="col-xl-4 col-sm-6 col-md-6 col-sm-12 my-4 ">
+        <app-card [article]="article" [badge]="'popular'"></app-card>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xl-8 col-lg-8 col-md-10 col-sm-10 col-11 mx-auto">
+    <div class="row">
+      <div *ngFor="let article of articles;let i = index" class="col-xl-4 col-sm-6 col-md-6 col-sm-12 my-4 ">
+        <app-card [article]="article" [badge]="i < 3 ? 'newest' : ''"></app-card>
       </div>
     </div>
     <div class="row">
       <p class="mx-auto">
         <button class="btn btn-outline-primary" (click)="nextPage()">
-          <span class="fas fa-angle-double-down">文章很精彩 我想读更多</span>
+          <span class="fas fa-angle-double-down"> 加载更多 </span>
         </button>
       </p>
     </div>

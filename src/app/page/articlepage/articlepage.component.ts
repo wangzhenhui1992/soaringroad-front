@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { PageComponent } from '../page.component';
 import { SafeHtml, DomSanitizer, Title, Meta } from '@angular/platform-browser';
 import { ArticleService } from '../../service/article.service';
@@ -28,6 +28,8 @@ export class ArticlepageComponent extends PageComponent implements OnInit, After
   </script>;`
   article: Article;
   safeBody: SafeHtml;
+  preArticle: Article;
+  nextArticle: Article;
 
   constructor(private router: Router, private activedRouter: ActivatedRoute, private articleService: ArticleService,
     private markdownService: MarkdownService, private title: Title, private meta: Meta) {
@@ -35,6 +37,9 @@ export class ArticlepageComponent extends PageComponent implements OnInit, After
   }
 
   ngAfterViewInit() {
+    this.router.events.filter((event) => event instanceof NavigationEnd).subscribe((event: NavigationEnd) => {
+      this.ngOnInit();
+    });
     // let script = document.createElement('script');
     // script.async = true;
     // script.setAttribute('src', '//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js');
@@ -51,10 +56,52 @@ export class ArticlepageComponent extends PageComponent implements OnInit, After
   }
 
   ngOnInit() {
-    const articleId = this.activedRouter.snapshot.params['id'];
+    const articleId = parseInt(this.activedRouter.snapshot.params['id']);
     if (!articleId) {
       this.router.navigate([PagePath.ERROR_PAGE]);
     }
+
+    this.getArticleById(articleId);
+    this.getPreAndNextArticle(articleId);
+  }
+
+  getPreAndNextArticle(articleId: number) {
+    this.preArticle = null;
+    this.nextArticle = null;
+    this.articleService.count().toPromise().then(count => {
+      this.getPreArticle(articleId);
+      this.getNextArticle(articleId, count);
+    });
+  }
+
+  getPreArticle(articleId: number) {
+    if (articleId < 2) {
+      return;
+    }
+    const info = this.articleService.get(articleId - 1);
+    if (!info) {
+      return;
+    }
+    info.subscribe(body => {
+      this.preArticle = body;
+    });
+  }
+
+  getNextArticle(articleId: number, count: number) {
+    if ((articleId + 1) > count) {
+      return;
+    }
+    const info = this.articleService.get(articleId + 1);
+    if (!info) {
+      return;
+    }
+    info.subscribe(body => {
+      this.nextArticle = body;
+    });
+  }
+
+
+  getArticleById(articleId: number) {
     const info = this.articleService.get(articleId);
     if (!info) {
       this.router.navigate([PagePath.ERROR_PAGE]);
@@ -69,10 +116,9 @@ export class ArticlepageComponent extends PageComponent implements OnInit, After
       this.title.setTitle(this.article.title);
       this.safeBody = this.markdownService.render(this.article.content);
       const keywords = Array.from(new Set(this.article.labels.concat(this.article.keywords)));
-      this.meta.getTag('name="description"').setAttribute("content",this.article.summary);
-      this.meta.addTag({ name: 'keywords', content: keywords.join(",")+","+this.article.category});
+      this.meta.getTag('name="description"').setAttribute('content', this.article.summary);
+      this.meta.addTag({ name: 'keywords', content: keywords.join(',') + ',' + this.article.category });
       // this.safeBody = this.domSanitizer.bypassSecurityTrustHtml(markdown.toHTML(this.article.content));
-
     });
   }
 
